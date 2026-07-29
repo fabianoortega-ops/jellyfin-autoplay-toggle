@@ -12,11 +12,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("JellyfinAutoPlayToggle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.3.0+9f7adc9325091d4a9bbae7749aa724dc268b8f78")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.4.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.0.4.0+1d003848011b387602feac642f53084381529e16")]
 [assembly: System.Reflection.AssemblyProductAttribute("JellyfinAutoPlayToggle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JellyfinAutoPlayToggle")]
-[assembly: System.Reflection.AssemblyVersionAttribute("2.0.3.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2.0.4.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 
