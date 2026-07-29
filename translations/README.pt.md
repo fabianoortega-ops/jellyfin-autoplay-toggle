@@ -49,9 +49,6 @@ AutoPlay Toggle adiciona um **botão 🔁** entre o botão de favoritos e o de l
 | 🎮 **Botão no Player** | Fica entre ♥ e CC — exatamente onde você precisa |
 | ⚡ **Toggle Instantâneo** | Mudanças aplicadas imediatamente, sem recarregar a página |
 | 🌍 **25 Idiomas** | Detecta automaticamente o idioma do browser |
-| 🔧 **API REST** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **Painel no Dashboard** | Também acessível pela barra lateral do Jellyfin |
-| 🚀 **Atualização sem Reinício** | Mudanças na UI via `git push` — sem reiniciar o servidor |
 
 ---
 

@@ -6,7 +6,7 @@
 <br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
-[![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-25-brightgreen?style=flat-square)](#supported-languages)
 [![JavaScript Injector](https://img.shields.io/badge/requires-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
@@ -49,9 +49,6 @@ AutoPlay Toggleは、Jellyfinビデオプレーヤーのお気に入りボタン
 | 🎮 **プレーヤー内ボタン** | ♥とCCの間 — ちょうど必要な場所に |
 | ⚡ **即座の切り替え** | 変更はすぐに適用、リロード不要 |
 | 🌍 **25言語** | ブラウザの言語を自動検出 |
-| 🔧 **REST API** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **ダッシュボードパネル** | Jellyfinサイドバーからもアクセス可能 |
-| 🚀 **ホットリロード** | `git push`でUI更新 — サーバー再起動不要 |
 
 ---
 

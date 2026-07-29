@@ -6,7 +6,7 @@
 <br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
-[![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-25-brightgreen?style=flat-square)](#supported-languages)
 [![JavaScript Injector](https://img.shields.io/badge/requires-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
@@ -49,9 +49,7 @@ AutoPlay Toggle voegt een **🔁 knop** toe tussen de favoriet- en ondertitelkno
 | 🎮 **In-speler knop** | Tussen ♥ en CC — precies waar je het nodig hebt |
 | ⚡ **Direct schakelen** | Wijzigingen worden direct toegepast, geen herladen |
 | 🌍 **25 Talen** | Detecteert automatisch de browsertaal |
-| 🔧 **REST API** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
 | 📊 **Dashboard paneel** | Ook toegankelijk via de Jellyfin zijbalk |
-| 🚀 **Hot Reload** | UI-updates via `git push` — geen server herstart nodig |
 
 ---
 

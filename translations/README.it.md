@@ -6,7 +6,7 @@
 <br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
-[![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-25-brightgreen?style=flat-square)](#supported-languages)
 [![JavaScript Injector](https://img.shields.io/badge/requires-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
@@ -49,9 +49,6 @@ AutoPlay Toggle aggiunge un **pulsante 🔁** tra il pulsante preferiti e quello
 | 🎮 **Pulsante nel Player** | Tra ♥ e CC — esattamente dove ne hai bisogno |
 | ⚡ **Toggle Istantaneo** | Le modifiche si applicano immediatamente, senza ricaricare |
 | 🌍 **25 Lingue** | Rileva automaticamente la lingua del browser |
-| 🔧 **API REST** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **Pannello Dashboard** | Accessibile anche dalla barra laterale di Jellyfin |
-| 🚀 **Hot Reload** | Aggiornamenti UI via `git push` — senza riavviare il server |
 
 ---
 

@@ -6,7 +6,7 @@
 <br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
-[![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-25-brightgreen?style=flat-square)](#-supported-languages)
 [![JavaScript Injector](https://img.shields.io/badge/requires-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
@@ -50,9 +50,6 @@ AutoPlay Toggle adds a **🔁 button** between the favorite and subtitle buttons
 | 🎮 **In-Player Button** | Sits between ♥ and CC — right where you need it |
 | ⚡ **Instant Toggle** | Changes apply immediately, no page reload |
 | 🌍 **25 Languages** | Auto-detects your browser language |
-| 🔧 **REST API** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **Dashboard Panel** | Also accessible from the Jellyfin sidebar |
-| 🚀 **Hot Reload** | UI updates via `git push` — no server restart needed |
 
 ---
 

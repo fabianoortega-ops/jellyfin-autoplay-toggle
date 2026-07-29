@@ -6,7 +6,7 @@
 <br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
-[![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Languages](https://img.shields.io/badge/languages-25-brightgreen?style=flat-square)](#supported-languages)
 [![JavaScript Injector](https://img.shields.io/badge/requires-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
@@ -49,9 +49,6 @@ AutoPlay Toggle 在 Jellyfin 视频播放器的收藏和字幕按钮之间添加
 | 🎮 **播放器内按钮** | 位于 ♥ 和 CC 之间——正好在需要的地方 |
 | ⚡ **即时切换** | 更改立即应用，无需重新加载 |
 | 🌍 **25种语言** | 自动检测浏览器语言 |
-| 🔧 **REST API** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **仪表板面板** | 也可通过 Jellyfin 侧栏访问 |
-| 🚀 **热重载** | 通过 `git push` 更新界面——无需重启服务器 |
 
 ---
 
