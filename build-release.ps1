@@ -25,7 +25,7 @@ Write-Host ""
 
 # ── 1. Compilar ──────────────────────────────────────────────────────────────
 Write-Host "[1/5] Compilando..." -ForegroundColor Yellow
-dotnet build --configuration Release --nologo -v q
+dotnet build --configuration Release --nologo -v q /p:Version=$Version /p:AssemblyVersion=$Version /p:FileVersion=$Version
 if ($LASTEXITCODE -ne 0) { Write-Error "Falha na compilação."; exit 1 }
 Write-Host "      OK"
 

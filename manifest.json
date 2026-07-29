@@ -11,8 +11,8 @@
       "changelog": "## 2.0.1.0\n\n- Switch para ligar/desligar autoplay\n- Compatível com Jellyfin 10.11.x",
       "targetAbi": "10.11.0.0",
       "sourceUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/releases/JellyfinAutoPlayToggle_2.0.1.0.zip",
-      "checksum": "b73ed882b9bbe270a67b124d634b20c6",
-      "timestamp": "2026-07-29T04:51:36Z"
+      "checksum": "f448d636f92ac1a59ef8fd376e5bb1a4",
+      "timestamp": "2026-07-29T05:13:45Z"
     }
   ]
 }]
