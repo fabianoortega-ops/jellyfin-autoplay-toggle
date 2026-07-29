@@ -6,7 +6,6 @@
     'use strict';
     var BTN_ID = 'apt-player-btn';
     var _state = null;
-    var _mainObserver = null;
 
     // ── i18n ─────────────────────────────────────────────────────────────────
     var i18n = (function () {
@@ -85,40 +84,19 @@
         return btn;
     }
 
-    // ── Injeção inteligente ───────────────────────────────────────────────────
-    // O observer se DESCONECTA após injetar o botão e só volta quando o player
-    // fechar — elimina a carga contínua de observar todo o DOM do Jellyfin.
-
-    function watchForRemoval(btn) {
-        var parent = btn.parentNode;
-        if (!parent) return;
-        var removalObserver = new MutationObserver(function() {
-            if (!document.getElementById(BTN_ID)) {
-                removalObserver.disconnect();
-                startWatching(); // player fechou, volta a observar
-            }
-        });
-        removalObserver.observe(parent, { childList: true });
-    }
+    // ── Injeção robusta ──────────────────────────────────────────────────────
+    // MutationObserver sempre ativo — detect() é O(1) (getElementById).
+    // Sem setInterval. O observer dispara na mudança de DOM e re-injeta
+    // o botão se o Jellyfin Enhanced ou o player reconstruir os controles.
 
     function inject() {
-        if (document.getElementById(BTN_ID)) return false;
+        if (document.getElementById(BTN_ID)) return;
         var ref = document.querySelector('.btnSubtitles') || document.querySelector('.btnFullscreen');
-        if (!ref) return false;
-        var btn = createButton();
-        ref.parentNode.insertBefore(btn, ref);
-        if (_mainObserver) { _mainObserver.disconnect(); } // para de observar o DOM global
-        watchForRemoval(btn);
+        if (!ref) return;
+        ref.parentNode.insertBefore(createButton(), ref);
         console.log('[AutoPlayToggle] Botão injetado.');
-        return true;
     }
 
-    function startWatching() {
-        _mainObserver = new MutationObserver(function() { inject(); });
-        _mainObserver.observe(document.body, { childList: true, subtree: true });
-    }
-
-    startWatching();
+    new MutationObserver(inject).observe(document.body, { childList: true, subtree: true });
     console.log('[AutoPlayToggle] Script carregado.');
 }());
-
