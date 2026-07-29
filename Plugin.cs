@@ -120,7 +120,7 @@ namespace JellyfinAutoPlayToggle
             {
                 Name                 = "AutoPlayToggle",
                 EmbeddedResourcePath = $"{GetType().Namespace}.Configuration.config.html",
-                EnableInMainMenu     = true,
+                EnableInMainMenu     = false,
                 DisplayName          = "AutoPlay Toggle",
                 MenuIcon             = "play_arrow",
                 MenuSection          = "server"
@@ -128,4 +128,3 @@ namespace JellyfinAutoPlayToggle
         };
     }
 }
-

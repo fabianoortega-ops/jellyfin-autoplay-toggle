@@ -121,3 +121,4 @@
     startWatching();
     console.log('[AutoPlayToggle] Script carregado.');
 }());
+
