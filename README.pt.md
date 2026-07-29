@@ -5,7 +5,6 @@
 <br/>
 <br/>
 
-[![Release](https://img.shields.io/github/v/release/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=00a4dc&label=versão)](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
 [![Licença](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
 [![Idiomas](https://img.shields.io/badge/idiomas-25-brightgreen?style=flat-square)](#-idiomas-suportados)
