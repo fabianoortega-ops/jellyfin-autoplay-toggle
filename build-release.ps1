@@ -61,9 +61,17 @@ $manifestJson = "[" + ($pluginObj | ConvertTo-Json -Depth 10) + "]"
 Set-Content -Path "manifest.json" -Value $manifestJson -Encoding UTF8
 Write-Host "      MD5: $checksum  |  OK"
 
-# ── 4. Commit (git add . funciona pois bin/ e obj/ estão no .gitignore) ──────
-Write-Host "[4/5] Commitando..." -ForegroundColor Yellow
-git add . 2>&1 | Out-Null
+# ── 4. Garantir que bin/ e obj/ não estão sendo trackeados ─────────────────
+Write-Host "[4/5] Verificando tracking de bin/ e obj/..." -ForegroundColor Yellow
+$tracked = git ls-files bin/ obj/ 2>&1
+if ($tracked) {
+    git rm -r --cached bin/ obj/ 2>&1 | Out-Null
+    Write-Host "      bin/ e obj/ removidos do tracking."
+}
+
+# ── 5. Commit (git add . funciona pois bin/ e obj/ estão no .gitignore) ──────
+Write-Host "[5/5] Commitando..." -ForegroundColor Yellow
+git add "releases/$ZipName" manifest.json .gitignore Plugin.cs AutoPlayController.cs PluginConfiguration.cs JellyfinAutoPlayToggle.csproj "Configuration/config.html" build-release.ps1 .nojekyll 2>&1 | Out-Null
 
 $status = git status --porcelain 2>&1
 if ($status) {
@@ -73,7 +81,7 @@ if ($status) {
 }
 
 # ── 5. Pull --rebase + push ───────────────────────────────────────────────────
-Write-Host "[5/5] Sincronizando e enviando..." -ForegroundColor Yellow
+Write-Host "[6/6] Sincronizando e enviando..." -ForegroundColor Yellow
 git pull --rebase origin main 2>&1 | ForEach-Object { Write-Host "      $_" }
 if ($LASTEXITCODE -ne 0) { Write-Error "Falha no pull --rebase."; exit 1 }
 

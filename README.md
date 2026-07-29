@@ -62,42 +62,4 @@ O botão detecta automaticamente o idioma do browser.
 | Ελληνικά | `el` | Επόμενο επεισόδιο: Ενεργό | Επόμενο επεισόδιο: Ανενεργό |
 | Català | `ca` | Episodi següent: Activat | Episodi següent: Desactivat |
 
-Idioma não listado? Fique à vontade para abrir um PR ou issue.
-
----
-
-## API REST
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| `GET` | `/AutoPlay/Status/{userId}` | Retorna o estado atual |
-| `POST` | `/AutoPlay/Toggle` | Alterna o estado |
-
----
-
-## Publicar nova versão
-
-```powershell
-.\build-release.ps1 -Version "0.x.x.0"
-```
-
----
-
-## Estrutura
-
-```
-├── AutoPlayController.cs     API REST
-├── Plugin.cs                 Registro + injeção do script via JavaScript Injector
-├── PluginConfiguration.cs    Configurações persistentes
-├── JellyfinAutoPlayToggle.csproj
-├── Configuration/config.html Página no Dashboard (alternativa ao botão no player)
-├── releases/                 .zip gerado pelo script de release
-├── manifest.json             Índice do repositório Jellyfin
-└── build-release.ps1         Script de release (Windows/PowerShell)
-```
-
----
-
-## GUID
-
-`036768e6-cd63-49c0-9661-2677d3ccef72`
+Idioma não listado? Abra um [issue](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues) ou PR.
