@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
+using System.Threading.Tasks;
 using MediaBrowser.Common.Configuration;
 using MediaBrowser.Common.Plugins;
 using MediaBrowser.Model.Plugins;
@@ -32,49 +33,69 @@ namespace JellyfinAutoPlayToggle
         public override string Description => "Botão no player para ligar/desligar o autoplay do próximo episódio.";
         public override Guid   Id          => Guid.Parse("036768e6-cd63-49c0-9661-2677d3ccef72");
 
-        // ── Registra o script no JavaScript Injector via reflection ──────────
-        // Não há dependência em tempo de compilação: funciona se o plugin estiver
-        // instalado, é ignorado silenciosamente se não estiver.
+        // Roda em background com retry — o Injector pode ainda não estar pronto
+        // quando nosso plugin é carregado pelo Jellyfin.
         private void RegisterWithJavaScriptInjector()
         {
-            try
+            _ = Task.Run(async () =>
             {
-                var injectorAssembly = FindAssembly("Jellyfin.Plugin.JavaScriptInjector");
-                if (injectorAssembly == null)
+                const int maxAttempts = 10;
+                for (int attempt = 1; attempt <= maxAttempts; attempt++)
                 {
-                    _logger.LogInformation("[AutoPlayToggle] JavaScript Injector não encontrado — botão no player não será injetado.");
-                    return;
+                    // Aguarda crescentemente: 3s, 6s, 9s … até 30s
+                    await Task.Delay(TimeSpan.FromSeconds(attempt * 3)).ConfigureAwait(false);
+
+                    try
+                    {
+                        var injectorAssembly = FindAssembly("Jellyfin.Plugin.JavaScriptInjector");
+                        if (injectorAssembly == null)
+                        {
+                            _logger.LogInformation("[AutoPlayToggle] JavaScript Injector não encontrado.");
+                            return;
+                        }
+
+                        var iface = injectorAssembly.GetType("Jellyfin.Plugin.JavaScriptInjector.PluginInterface");
+                        if (iface == null)
+                        {
+                            _logger.LogWarning("[AutoPlayToggle] PluginInterface não encontrado.");
+                            return;
+                        }
+
+                        var payload = new JObject
+                        {
+                            { "id",                     $"{Id}-player-btn"       },
+                            { "name",                   "AutoPlay Toggle Button" },
+                            { "script",                 BuildPlayerScript()      },
+                            { "enabled",                true                     },
+                            { "requiresAuthentication", true                     },
+                            { "pluginId",               Id.ToString()            },
+                            { "pluginName",             Name                     },
+                            { "pluginVersion",          Version.ToString()       }
+                        };
+
+                        var result = iface.GetMethod("RegisterScript")?.Invoke(null, new object[] { payload });
+                        if (result is bool ok && ok)
+                        {
+                            _logger.LogInformation("[AutoPlayToggle] Script registrado no JavaScript Injector (tentativa {A}).", attempt);
+                            return;
+                        }
+
+                        _logger.LogWarning("[AutoPlayToggle] RegisterScript retornou falso (tentativa {A}/{M}).", attempt, maxAttempts);
+                    }
+                    catch (TargetInvocationException ex)
+                        when (ex.InnerException is InvalidOperationException)
+                    {
+                        _logger.LogDebug("[AutoPlayToggle] Injector ainda não pronto (tentativa {A}/{M}), aguardando…", attempt, maxAttempts);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "[AutoPlayToggle] Erro inesperado ao registrar (tentativa {A}).", attempt);
+                        return;
+                    }
                 }
 
-                var iface = injectorAssembly.GetType("Jellyfin.Plugin.JavaScriptInjector.PluginInterface");
-                if (iface == null)
-                {
-                    _logger.LogWarning("[AutoPlayToggle] PluginInterface não encontrado no JavaScript Injector.");
-                    return;
-                }
-
-                var payload = new JObject
-                {
-                    { "id",                   $"{Id}-player-btn"  },
-                    { "name",                 "AutoPlay Toggle Button" },
-                    { "script",               BuildPlayerScript() },
-                    { "enabled",              true               },
-                    { "requiresAuthentication", true             },
-                    { "pluginId",             Id.ToString()      },
-                    { "pluginName",           Name               },
-                    { "pluginVersion",        Version.ToString() }
-                };
-
-                var result = iface.GetMethod("RegisterScript")?.Invoke(null, new object[] { payload });
-                if (result is bool ok && ok)
-                    _logger.LogInformation("[AutoPlayToggle] Script registrado no JavaScript Injector.");
-                else
-                    _logger.LogWarning("[AutoPlayToggle] RegisterScript retornou falso.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "[AutoPlayToggle] Erro ao registrar no JavaScript Injector.");
-            }
+                _logger.LogWarning("[AutoPlayToggle] Não foi possível registrar após {M} tentativas.", maxAttempts);
+            });
         }
 
         private static Assembly? FindAssembly(string name) =>
@@ -82,7 +103,6 @@ namespace JellyfinAutoPlayToggle
                 .SelectMany(ctx => ctx.Assemblies)
                 .FirstOrDefault(a => a.FullName?.Contains(name) ?? false);
 
-        // ── JavaScript injetado no player ─────────────────────────────────────
         private static string BuildPlayerScript() => @"
 (function () {
     'use strict';
@@ -118,7 +138,7 @@ namespace JellyfinAutoPlayToggle
 
     function applyState(btn, enabled) {
         _state = enabled;
-        btn.title = enabled ? 'Autoplay: Ligado' : 'Autoplay: Desligado';
+        btn.title = enabled ? 'Autoplay: Ligado (clique para desligar)' : 'Autoplay: Desligado (clique para ligar)';
         btn.style.opacity = enabled ? '1' : '0.4';
     }
 
@@ -127,16 +147,15 @@ namespace JellyfinAutoPlayToggle
         btn.id = BTN_ID;
         btn.type = 'button';
         btn.className = 'paper-icon-button-light';
-        btn.title = 'Autoplay';
-        btn.style.cssText = 'vertical-align:middle;margin:0 2px;padding:0;background:none;border:none;cursor:pointer;color:inherit;';
+        btn.style.cssText = 'vertical-align:middle;margin:0 2px;padding:0;background:none;border:none;cursor:pointer;color:inherit;opacity:0.4;';
         btn.innerHTML = '<span class=""material-icons"" style=""font-size:22px"">repeat</span>';
+        btn.title = 'Autoplay';
 
-        // Carrega estado inicial
         var uid = getUserId();
         if (uid) {
             api('GET', 'AutoPlay/Status/' + uid)
                 .then(function(d) { applyState(btn, d.enableNextEpisodeAutoPlay); })
-                .catch(function() { btn.style.opacity = '0.4'; });
+                .catch(function(e) { console.warn('[AutoPlayToggle] Erro ao carregar estado:', e); });
         }
 
         btn.addEventListener('click', function(e) {
@@ -148,8 +167,12 @@ namespace JellyfinAutoPlayToggle
                 .then(function(d) {
                     applyState(btn, d.enableNextEpisodeAutoPlay);
                     btn.disabled = false;
+                    console.log('[AutoPlayToggle] Autoplay: ' + (d.enableNextEpisodeAutoPlay ? 'Ligado' : 'Desligado'));
                 })
-                .catch(function() { btn.disabled = false; });
+                .catch(function(e) {
+                    console.error('[AutoPlayToggle] Erro ao alternar:', e);
+                    btn.disabled = false;
+                });
         });
 
         return btn;
@@ -162,7 +185,7 @@ namespace JellyfinAutoPlayToggle
             document.querySelector('.osdControls .buttons') ||
             document.querySelector('.videoOsdBottom .buttons') ||
             document.querySelector('.videoOsdBottom-buttons') ||
-            document.querySelector('[data-id=""osdcontrols""] .buttons');
+            document.querySelector('.osdControls');
 
         if (!anchor) return;
 
@@ -170,6 +193,8 @@ namespace JellyfinAutoPlayToggle
         var btn = createButton();
         if (ref) anchor.insertBefore(btn, ref);
         else     anchor.appendChild(btn);
+
+        console.log('[AutoPlayToggle] Botão injetado no player.');
     }
 
     new MutationObserver(inject).observe(document.body, { childList: true, subtree: true });
@@ -178,7 +203,6 @@ namespace JellyfinAutoPlayToggle
 }());
 ";
 
-        // ── Página no Dashboard (mantida como fallback) ────────────────────────
         public IEnumerable<PluginPageInfo> GetPages() => new[]
         {
             new PluginPageInfo
@@ -186,9 +210,9 @@ namespace JellyfinAutoPlayToggle
                 Name                 = "AutoPlayToggle",
                 EmbeddedResourcePath = $"{GetType().Namespace}.Configuration.config.html",
                 EnableInMainMenu     = true,
+                DisplayName          = "AutoPlay Toggle",
                 MenuIcon             = "play_arrow",
-                MenuSection          = "server",
-                DisplayName          = "AutoPlay Toggle"
+                MenuSection          = "server"
             }
         };
     }
