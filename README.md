@@ -12,7 +12,7 @@ próximo episódio **sem precisar entrar nas configurações do usuário**.
 1. No Jellyfin, vá em **Dashboard → Plugins → Repositories**
 2. Clique em **+** e adicione:
    - **Name:** AutoPlay Toggle
-   - **URL:** `https://SEU-USUARIO.github.io/jellyfin-autoplay-toggle/manifest.json`
+   - **URL:** `https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json`
 3. Vá em **Catalog**, encontre **AutoPlay Toggle** e clique em **Install**
 4. Reinicie o Jellyfin
 5. O plugin aparece no menu lateral
