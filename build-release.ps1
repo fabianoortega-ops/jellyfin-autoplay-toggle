@@ -48,6 +48,7 @@ $pluginObj = [ordered]@{
     overview    = "Controle o autoplay do próximo episódio sem sair do Dashboard do Jellyfin."
     owner       = $GitHubUser
     category    = "General"
+    imageUrl    = "$RepoUrl/logo.svg"
     versions    = @([ordered]@{
         version   = $Version
         changelog = "## $Version`n`n- Switch para ligar/desligar autoplay`n- Compatível com Jellyfin 10.11.x"

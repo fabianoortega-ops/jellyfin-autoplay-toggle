@@ -5,14 +5,15 @@
   "overview": "Controle o autoplay do próximo episódio sem sair do Dashboard do Jellyfin.",
   "owner": "fabianoortega-ops",
   "category": "General",
+  "imageUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/logo.svg",
   "versions": [
     {
-      "version": "0.2.4.0",
-      "changelog": "## 0.2.4.0\n\n- Switch para ligar/desligar autoplay\n- Compatível com Jellyfin 10.11.x",
+      "version": "0.2.5.0",
+      "changelog": "## 0.2.5.0\n\n- Switch para ligar/desligar autoplay\n- Compatível com Jellyfin 10.11.x",
       "targetAbi": "10.11.0.0",
-      "sourceUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/releases/JellyfinAutoPlayToggle_0.2.4.0.zip",
-      "checksum": "565ade66bda6963416f1e5a7b423f6c2",
-      "timestamp": "2026-07-29T14:15:06Z"
+      "sourceUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/releases/JellyfinAutoPlayToggle_0.2.5.0.zip",
+      "checksum": "5e3adb710869db6f943254f697b21a5b",
+      "timestamp": "2026-07-29T15:03:26Z"
     }
   ]
 }]
