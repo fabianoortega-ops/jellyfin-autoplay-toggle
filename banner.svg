@@ -7,7 +7,9 @@
     </linearGradient>
   </defs>
   <rect width="900" height="200" fill="url(#bg)" rx="12"/>
-  <text x="450" y="88" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="48" font-weight="700" fill="#ffffff" text-anchor="middle">🔁 AutoPlay Toggle</text>
+  <text x="450" y="88" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="48" font-weight="700" text-anchor="middle">
+    <tspan fill="#ffffff">🔁 AutoPlay </tspan><tspan fill="#00a4dc">Toggle</tspan>
+  </text>
   <text x="450" y="130" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" fill="#00a4dc" text-anchor="middle">Toggle next episode autoplay directly from the Jellyfin player</text>
   <text x="450" y="166" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13" fill="#555" text-anchor="middle">One button. No menus. No settings. Just play or stop.</text>
 </svg>
