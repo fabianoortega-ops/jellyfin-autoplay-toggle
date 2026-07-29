@@ -117,3 +117,4 @@ namespace JellyfinAutoPlayToggle
         public bool Enable { get; set; }
     }
 }
+
