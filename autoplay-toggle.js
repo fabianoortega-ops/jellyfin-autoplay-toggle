@@ -97,12 +97,17 @@
         console.log('[AutoPlayToggle] Botão injetado.');
     }
 
-    // Quando o vídeo começa a tocar o OSD aparece automaticamente —
-    // injetamos logo após. Evento no capture phase é leve e preciso.
+    // Quando o vídeo começa a tocar, tenta injetar a cada 100ms até
+    // o botão aparecer (máx 3s). Para sozinho assim que injeta.
     document.addEventListener('play', function(e) {
-        if (e.target && e.target.tagName === 'VIDEO') {
-            setTimeout(inject, 600); // aguarda OSD renderizar
-        }
+        if (!e.target || e.target.tagName !== 'VIDEO') return;
+        var tries = 0;
+        var retry = setInterval(function() {
+            inject();
+            if (document.getElementById(BTN_ID) || ++tries > 30) {
+                clearInterval(retry);
+            }
+        }, 100);
     }, true);
 
     // Mousemove: OSD aparece com movimento — debounce curto para resposta rápida
