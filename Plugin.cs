@@ -138,7 +138,7 @@ namespace JellyfinAutoPlayToggle
 
     function applyState(btn, enabled) {
         _state = enabled;
-        btn.title = enabled ? 'Autoplay: Ligado (clique para desligar)' : 'Autoplay: Desligado (clique para ligar)';
+        btn.title = enabled ? 'Próximo episódio: Ligado' : 'Próximo episódio: Desligado';
         btn.style.opacity = enabled ? '1' : '0.4';
     }
 
@@ -149,7 +149,7 @@ namespace JellyfinAutoPlayToggle
         btn.className = 'paper-icon-button-light';
         btn.style.cssText = 'vertical-align:middle;margin:0 2px;padding:0;background:none;border:none;cursor:pointer;color:inherit;opacity:0.4;';
         btn.innerHTML = '<span class=""material-icons"" style=""font-size:22px"">repeat</span>';
-        btn.title = 'Autoplay';
+        btn.title = 'Próximo episódio: carregando…';
 
         var uid = getUserId();
         if (uid) {
@@ -181,9 +181,8 @@ namespace JellyfinAutoPlayToggle
     function inject() {
         if (document.getElementById(BTN_ID)) return;
 
-        var ref = document.querySelector('.btnFullscreen') ||
-                  document.querySelector('.btnPip') ||
-                  document.querySelector('.btnVideoOsdSettings');
+        var ref = document.querySelector('.btnSubtitles') ||
+                  document.querySelector('.btnFullscreen');
 
         if (!ref) return;
 
