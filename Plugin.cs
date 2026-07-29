@@ -182,10 +182,9 @@ namespace JellyfinAutoPlayToggle
         if (document.getElementById(BTN_ID)) return;
 
         var anchor =
+            document.querySelector('.buttons.focuscontainer-x') ||
             document.querySelector('.osdControls .buttons') ||
-            document.querySelector('.videoOsdBottom .buttons') ||
-            document.querySelector('.videoOsdBottom-buttons') ||
-            document.querySelector('.osdControls');
+            document.querySelector('.videoOsdBottom .buttons');
 
         if (!anchor) return;
 
