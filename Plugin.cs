@@ -103,15 +103,15 @@ namespace JellyfinAutoPlayToggle
                 .SelectMany(ctx => ctx.Assemblies)
                 .FirstOrDefault(a => a.FullName?.Contains(name) ?? false);
 
-        private static string BuildPlayerScript() => @"
+        private string BuildPlayerScript() => $@"
 // AutoPlay Toggle — loader
 // O script real é servido pelo GitHub Pages — atualiza sem reiniciar o Jellyfin.
-(function () {
+(function () {{
     var s = document.createElement('script');
-    s.src = 'https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/autoplay-toggle.js?t=' + Date.now();
-    s.onerror = function() { console.warn('[AutoPlayToggle] Falha ao carregar script remoto.'); };
+    s.src = 'https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/autoplay-toggle.js?v={Version}';
+    s.onerror = function() {{ console.warn('[AutoPlayToggle] Falha ao carregar script remoto.'); }};
     document.head.appendChild(s);
-}());
+}}());
 ";
 
         public IEnumerable<PluginPageInfo> GetPages() => new[]
