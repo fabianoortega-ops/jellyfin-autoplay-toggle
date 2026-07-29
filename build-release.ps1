@@ -71,7 +71,7 @@ if ($tracked) {
 
 # ── 5. Commit (git add . funciona pois bin/ e obj/ estão no .gitignore) ──────
 Write-Host "[5/5] Commitando..." -ForegroundColor Yellow
-git add "releases/$ZipName" manifest.json .gitignore Plugin.cs AutoPlayController.cs PluginConfiguration.cs JellyfinAutoPlayToggle.csproj "Configuration/config.html" build-release.ps1 .nojekyll 2>&1 | Out-Null
+git add . 2>&1 | Out-Null
 
 $status = git status --porcelain 2>&1
 if ($status) {
