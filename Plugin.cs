@@ -109,6 +109,42 @@ namespace JellyfinAutoPlayToggle
     var BTN_ID = 'apt-player-btn';
     var _state = null;
 
+    // ── i18n: detecta o idioma do browser e usa o texto correto ─────────────
+    var i18n = (function () {
+        var full = (navigator.language || 'en').toLowerCase();
+        var lang = full.split('-')[0];
+
+        var map = {
+            'en': { on: 'Next episode: On',              off: 'Next episode: Off',              loading: 'Next episode: loading…'          },
+            'pt': { on: 'Próximo episódio: Ligado',       off: 'Próximo episódio: Desligado',    loading: 'Próximo episódio: aguardando…'   },
+            'de': { on: 'Nächste Folge: Ein',             off: 'Nächste Folge: Aus',             loading: 'Nächste Folge: lädt…'            },
+            'fr': { on: 'Épisode suivant: Activé',        off: 'Épisode suivant: Désactivé',     loading: 'Épisode suivant: chargement…'    },
+            'es': { on: 'Siguiente episodio: Activado',   off: 'Siguiente episodio: Desactivado',loading: 'Siguiente episodio: cargando…'   },
+            'it': { on: 'Episodio successivo: Attivo',    off: 'Episodio successivo: Inattivo',  loading: 'Episodio successivo: caricamento…'},
+            'nl': { on: 'Volgend aflevering: Aan',        off: 'Volgend aflevering: Uit',        loading: 'Volgend aflevering: laden…'      },
+            'ru': { on: 'Следующий эпизод: Вкл',          off: 'Следующий эпизод: Выкл',         loading: 'Следующий эпизод: загрузка…'     },
+            'zh': { on: '下一集：开启',                     off: '下一集：关闭',                    loading: '下一集：加载中…'                  },
+            'ja': { on: '次のエピソード: オン',              off: '次のエピソード: オフ',             loading: '次のエピソード: 読み込み中…'      },
+            'ko': { on: '다음 에피소드: 켜짐',               off: '다음 에피소드: 꺼짐',              loading: '다음 에피소드: 로딩 중…'          },
+            'pl': { on: 'Następny odcinek: Włączone',     off: 'Następny odcinek: Wyłączone',    loading: 'Następny odcinek: ładowanie…'    },
+            'sv': { on: 'Nästa avsnitt: På',              off: 'Nästa avsnitt: Av',              loading: 'Nästa avsnitt: laddar…'          },
+            'nb': { on: 'Neste episode: På',              off: 'Neste episode: Av',              loading: 'Neste episode: laster…'          },
+            'da': { on: 'Næste afsnit: Til',              off: 'Næste afsnit: Fra',              loading: 'Næste afsnit: indlæser…'         },
+            'fi': { on: 'Seuraava jakso: Päällä',         off: 'Seuraava jakso: Pois',           loading: 'Seuraava jakso: ladataan…'       },
+            'cs': { on: 'Další epizoda: Zapnuto',         off: 'Další epizoda: Vypnuto',         loading: 'Další epizoda: načítání…'        },
+            'sk': { on: 'Ďalšia epizóda: Zapnuté',        off: 'Ďalšia epizóda: Vypnuté',       loading: 'Ďalšia epizóda: načítavanie…'   },
+            'hu': { on: 'Következő rész: Be',             off: 'Következő rész: Ki',             loading: 'Következő rész: betöltés…'       },
+            'ro': { on: 'Episodul următor: Activat',      off: 'Episodul următor: Dezactivat',   loading: 'Episodul următor: se încarcă…'   },
+            'tr': { on: 'Sonraki bölüm: Açık',            off: 'Sonraki bölüm: Kapalı',          loading: 'Sonraki bölüm: yükleniyor…'      },
+            'ar': { on: 'الحلقة التالية: تشغيل',          off: 'الحلقة التالية: إيقاف',          loading: 'الحلقة التالية: جار التحميل…'   },
+            'uk': { on: 'Наступний епізод: Увімк',        off: 'Наступний епізод: Вимк',         loading: 'Наступний епізод: завантаження…' },
+            'el': { on: 'Επόμενο επεισόδιο: Ενεργό',     off: 'Επόμενο επεισόδιο: Ανενεργό',   loading: 'Επόμενο επεισόδιο: φόρτωση…'    },
+            'ca': { on: 'Episodi següent: Activat',       off: 'Episodi següent: Desactivat',    loading: 'Episodi següent: carregant…'     }
+        };
+
+        return map[full] || map[lang] || map['en'];
+    }());
+
     function getToken() {
         try {
             var ac = window.ApiClient;
@@ -138,7 +174,7 @@ namespace JellyfinAutoPlayToggle
 
     function applyState(btn, enabled) {
         _state = enabled;
-        btn.title = enabled ? 'Próximo episódio: Ligado' : 'Próximo episódio: Desligado';
+        btn.title   = enabled ? i18n.on : i18n.off;
         btn.style.opacity = enabled ? '1' : '0.4';
     }
 
@@ -149,7 +185,7 @@ namespace JellyfinAutoPlayToggle
         btn.className = 'paper-icon-button-light';
         btn.style.cssText = 'vertical-align:middle;margin:0 2px;padding:0;background:none;border:none;cursor:pointer;color:inherit;opacity:0.4;';
         btn.innerHTML = '<span class=""material-icons"" style=""font-size:22px"">repeat</span>';
-        btn.title = 'Próximo episódio: carregando…';
+        btn.title = i18n.loading;
 
         var uid = getUserId();
         if (uid) {
@@ -167,7 +203,7 @@ namespace JellyfinAutoPlayToggle
                 .then(function(d) {
                     applyState(btn, d.enableNextEpisodeAutoPlay);
                     btn.disabled = false;
-                    console.log('[AutoPlayToggle] Autoplay: ' + (d.enableNextEpisodeAutoPlay ? 'Ligado' : 'Desligado'));
+                    console.log('[AutoPlayToggle] ' + (d.enableNextEpisodeAutoPlay ? i18n.on : i18n.off));
                 })
                 .catch(function(e) {
                     console.error('[AutoPlayToggle] Erro ao alternar:', e);
@@ -187,9 +223,7 @@ namespace JellyfinAutoPlayToggle
         if (!ref) return;
 
         var btn = createButton();
-        // Usa ref.parentNode para garantir que o insert é sempre válido
         ref.parentNode.insertBefore(btn, ref);
-
         console.log('[AutoPlayToggle] Botão injetado no player.');
     }
 
