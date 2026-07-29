@@ -3,9 +3,6 @@
 <head>
     <title>AutoPlay Toggle</title>
     <style>
-        /* -------------------------------------------------- */
-        /* Segue o visual escuro padrão do Jellyfin Dashboard  */
-        /* -------------------------------------------------- */
         .apt-card {
             background: #1c1c1c;
             border: 1px solid #333;
@@ -14,138 +11,44 @@
             max-width: 480px;
             margin: 24px auto;
         }
-
-        .apt-title {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #e0e0e0;
-            margin-bottom: 6px;
-        }
-
-        .apt-subtitle {
-            font-size: 0.9em;
-            color: #888;
-            margin-bottom: 24px;
-        }
-
-        .apt-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .apt-label {
-            font-size: 1em;
-            color: #ccc;
-        }
-
-        /* Switch estilo toggle */
-        .apt-switch {
-            position: relative;
-            display: inline-block;
-            width: 56px;
-            height: 30px;
-        }
-
-        .apt-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .apt-slider {
-            position: absolute;
-            cursor: pointer;
-            inset: 0;
-            background: #555;
-            border-radius: 30px;
-            transition: background 0.3s;
-        }
-
-        .apt-slider:before {
-            content: "";
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            left: 4px;
-            bottom: 4px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        input:checked + .apt-slider {
-            background: #00a4dc; /* azul Jellyfin */
-        }
-
-        input:checked + .apt-slider:before {
-            transform: translateX(26px);
-        }
-
-        /* Badge de status */
-        .apt-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.82em;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
+        .apt-title { font-size: 1.4em; font-weight: 600; color: #e0e0e0; margin-bottom: 6px; }
+        .apt-subtitle { font-size: 0.9em; color: #888; margin-bottom: 24px; }
+        .apt-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .apt-label { font-size: 1em; color: #ccc; }
+        .apt-switch { position: relative; display: inline-block; width: 56px; height: 30px; }
+        .apt-switch input { opacity: 0; width: 0; height: 0; }
+        .apt-slider { position: absolute; cursor: pointer; inset: 0; background: #555; border-radius: 30px; transition: background 0.3s; }
+        .apt-slider:before { content: ""; position: absolute; width: 22px; height: 22px; left: 4px; bottom: 4px; background: white; border-radius: 50%; transition: transform 0.3s; }
+        input:checked + .apt-slider { background: #00a4dc; }
+        input:checked + .apt-slider:before { transform: translateX(26px); }
+        .apt-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.82em; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
         .apt-badge-on  { background: #00a4dc22; color: #00a4dc; border: 1px solid #00a4dc55; }
-        .apt-badge-off { background: #ff444422; color: #ff6666;  border: 1px solid #ff444455; }
+        .apt-badge-off { background: #ff444422; color: #ff6666; border: 1px solid #ff444455; }
         .apt-badge-loading { background: #44444422; color: #888; border: 1px solid #44444455; }
-
-        .apt-hint {
-            font-size: 0.82em;
-            color: #666;
-            margin-top: 16px;
-            line-height: 1.5;
-        }
-
-        .apt-error {
-            color: #ff6666;
-            font-size: 0.88em;
-            margin-top: 10px;
-            display: none;
-        }
+        .apt-hint { font-size: 0.82em; color: #666; margin-top: 16px; line-height: 1.5; }
+        .apt-error { color: #ff6666; font-size: 0.88em; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
-
 <div data-role="page" class="page type-interior pluginConfigurationPage AutoPlayToggle">
     <div class="content-primary">
-
         <div class="apt-card">
             <div class="apt-title">▶ AutoPlay Toggle</div>
             <div class="apt-subtitle">Controle o autoplay do próximo episódio sem sair desta página.</div>
-
             <div class="apt-row">
                 <span class="apt-label">Reproduzir próximo episódio automaticamente</span>
-                <label class="apt-switch" title="Ligar / Desligar autoplay">
+                <label class="apt-switch">
                     <input type="checkbox" id="aptToggle" disabled>
                     <span class="apt-slider"></span>
                 </label>
             </div>
-
             <div class="apt-row" style="justify-content:flex-start; gap:10px;">
                 <span class="apt-label" style="font-size:0.9em; color:#777;">Status:</span>
                 <span id="aptBadge" class="apt-badge apt-badge-loading">carregando…</span>
             </div>
-
-            <div id="aptError" class="apt-error">
-                ⚠ Erro ao comunicar com o servidor. Verifique o console (F12).
-            </div>
-
-            <p class="apt-hint">
-                A alteração é aplicada imediatamente na sua conta do Jellyfin.
-                Você também pode verificar em
-                <strong>Configurações → Reprodução → Reproduzir automaticamente o próximo episódio</strong>.
-            </p>
+            <div id="aptError" class="apt-error">⚠ Erro ao comunicar com o servidor.</div>
+            <p class="apt-hint">A alteração é aplicada imediatamente na sua conta do Jellyfin.</p>
         </div>
-
     </div>
 </div>
 
@@ -153,54 +56,51 @@
 (function () {
     "use strict";
 
-    // ------------------------------------------------------------------ //
-    //  Utilitários                                                         //
-    // ------------------------------------------------------------------ //
+    var initialized = false;
 
     function setBadge(state) {
         var badge = document.getElementById("aptBadge");
-        if (state === "on") {
-            badge.textContent = "Ligado";
-            badge.className = "apt-badge apt-badge-on";
-        } else if (state === "off") {
-            badge.textContent = "Desligado";
-            badge.className = "apt-badge apt-badge-off";
-        } else {
-            badge.textContent = "carregando…";
-            badge.className = "apt-badge apt-badge-loading";
-        }
+        if (state === "on")  { badge.textContent = "Ligado";     badge.className = "apt-badge apt-badge-on"; }
+        else if (state === "off") { badge.textContent = "Desligado"; badge.className = "apt-badge apt-badge-off"; }
+        else                 { badge.textContent = "carregando…"; badge.className = "apt-badge apt-badge-loading"; }
     }
 
     function showError(show) {
         document.getElementById("aptError").style.display = show ? "block" : "none";
     }
 
-    // ------------------------------------------------------------------ //
-    //  Carrega o estado atual do servidor                                  //
-    // ------------------------------------------------------------------ //
-
-    function loadStatus(userId) {
-        ApiClient.ajax({
-            url: ApiClient.getUrl("AutoPlay/Status/" + userId),
-            type: "GET",
-            dataType: "json"
-        }).then(function (response) {
-            var enabled = response.enableNextEpisodeAutoPlay;
-            var toggle = document.getElementById("aptToggle");
-            toggle.checked  = enabled;
-            toggle.disabled = false;
-            setBadge(enabled ? "on" : "off");
-            showError(false);
-        }).catch(function (err) {
-            console.error("[AutoPlayToggle] Erro ao carregar status:", err);
-            setBadge("loading");
-            showError(true);
-        });
+    // Usa fetch + token do ApiClient (compatível com Jellyfin 10.10/10.11)
+    function apiFetch(method, path, body) {
+        var baseUrl = ApiClient.serverAddress();
+        var token   = ApiClient.accessToken();
+        var url     = baseUrl + "/" + path;
+        var opts = {
+            method:  method,
+            headers: {
+                "Authorization": 'MediaBrowser Client="AutoPlayToggle", Token="' + token + '"',
+                "Content-Type":  "application/json"
+            }
+        };
+        if (body) opts.body = JSON.stringify(body);
+        return fetch(url, opts);
     }
 
-    // ------------------------------------------------------------------ //
-    //  Envia o novo estado para o servidor                                 //
-    // ------------------------------------------------------------------ //
+    function loadStatus(userId) {
+        apiFetch("GET", "AutoPlay/Status/" + userId)
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var toggle = document.getElementById("aptToggle");
+                toggle.checked  = data.enableNextEpisodeAutoPlay;
+                toggle.disabled = false;
+                setBadge(data.enableNextEpisodeAutoPlay ? "on" : "off");
+                showError(false);
+            })
+            .catch(function(err) {
+                console.error("[AutoPlayToggle] Erro ao carregar:", err);
+                setBadge("loading");
+                showError(true);
+            });
+    }
 
     function saveStatus(userId, newValue) {
         var toggle = document.getElementById("aptToggle");
@@ -208,42 +108,51 @@
         setBadge("loading");
         showError(false);
 
-        ApiClient.ajax({
-            url: ApiClient.getUrl("AutoPlay/Toggle"),
-            type: "POST",
-            dataType: "json",
-            contentType: "application/json",
-            data: JSON.stringify({ UserId: userId, Enable: newValue })
-        }).then(function (response) {
-            toggle.disabled = false;
-            toggle.checked  = response.enableNextEpisodeAutoPlay;
-            setBadge(response.enableNextEpisodeAutoPlay ? "on" : "off");
-        }).catch(function (err) {
-            console.error("[AutoPlayToggle] Erro ao salvar status:", err);
-            // Reverte o switch visualmente
-            toggle.checked  = !newValue;
-            toggle.disabled = false;
-            setBadge(!newValue ? "on" : "off");
-            showError(true);
-        });
+        apiFetch("POST", "AutoPlay/Toggle", { UserId: userId, Enable: newValue })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                toggle.disabled = false;
+                toggle.checked  = data.enableNextEpisodeAutoPlay;
+                setBadge(data.enableNextEpisodeAutoPlay ? "on" : "off");
+            })
+            .catch(function(err) {
+                console.error("[AutoPlayToggle] Erro ao salvar:", err);
+                toggle.checked  = !newValue;
+                toggle.disabled = false;
+                setBadge(!newValue ? "on" : "off");
+                showError(true);
+            });
     }
 
-    // ------------------------------------------------------------------ //
-    //  Inicialização quando a página é exibida                            //
-    // ------------------------------------------------------------------ //
+    function init() {
+        if (initialized) return;
 
-    document.querySelector(".AutoPlayToggle").addEventListener("pageshow", function () {
+        // Aguarda ApiClient estar disponível (carregamento assíncrono do Jellyfin)
+        if (typeof ApiClient === "undefined" || !ApiClient.getCurrentUserId) {
+            setTimeout(init, 150);
+            return;
+        }
+
         var userId = ApiClient.getCurrentUserId();
+        if (!userId) {
+            setTimeout(init, 150);
+            return;
+        }
 
+        initialized = true;
         loadStatus(userId);
-
         document.getElementById("aptToggle").addEventListener("change", function () {
             saveStatus(userId, this.checked);
         });
-    });
+    }
+
+    // Tenta inicializar via múltiplos eventos para cobrir diferentes versões do Jellyfin
+    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("viewshow",  init);
+    document.addEventListener("pageshow",  init);
+    setTimeout(init, 300); // fallback direto caso eventos não disparem
 
 }());
 </script>
-
 </body>
 </html>
