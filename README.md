@@ -127,6 +127,19 @@ Join the Jellyfin community to get help, share feedback, or just hang out:
 
 ---
 
+
+---
+
+## 🔗 Related
+
+Other Jellyfin plugins and tools you might find useful:
+
+- [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Required dependency. Inject custom JavaScript into the Jellyfin interface.
+- [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Adds ratings, tag badges, OSD improvements, and much more to Jellyfin.
+- [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Automatically detects and skips intros, credits, and recaps.
+- [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — A curated list of awesome Jellyfin plugins, themes, and tools.
+- [Jellyfin](https://github.com/jellyfin/jellyfin) — The free software media system this plugin is built for.
+
 ## 🤝 Contributing
 
 Contributions are welcome! You can help by:
