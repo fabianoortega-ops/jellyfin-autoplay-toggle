@@ -75,7 +75,7 @@ git rm -r --cached bin/ obj/ releases/ 2>&1 | Out-Null
 
 $status = git status --porcelain 2>&1
 if ($status) {
-    git commit -m "release: $TagName" 2>&1 | ForEach-Object { Write-Host "      $_" }
+    git commit -m "chore: publish" 2>&1 | ForEach-Object { Write-Host "      $_" }
 } else {
     Write-Host "      Nada novo para commitar."
 }

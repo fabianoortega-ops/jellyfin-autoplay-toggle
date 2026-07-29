@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Ιστοσελίδα](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Εγκατάσταση](#installation) · [🌍 Γλώσσες](#supported-languages) · [🐛 Προβλήματα](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Lloc web](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instal·lar](#installation) · [🌍 Idiomes](#supported-languages) · [🐛 Problemes](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Μεταφράσεις
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Θέλετε να προσθέσετε τη γλώσσα σας; [Ανοίξτε PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Traduccions
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Voleu afegir el vostre idioma? [Obriu un PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Τι κάνει
+## 🎯 Què fa
 
-Το AutoPlay Toggle προσθέτει ένα **κουμπί 🔁** μεταξύ των κουμπιών αγαπημένων και υποτίτλων στο πρόγραμμα αναπαραγωγής βίντεο Jellyfin.
+AutoPlay Toggle afegeix un **botó 🔁** entre el botó de favorits i el de subtítols al reproductor de vídeo de Jellyfin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@
   AutoPlay Toggle
 ```
 
-- **Φωτεινό εικονίδιο** → αυτόματη αναπαραγωγή επόμενου επεισοδίου **ενεργό**
-- **Σκοτεινό εικονίδιο** → αυτόματη αναπαραγωγή επόμενου επεισοδίου **ανενεργό**
-- Οι αλλαγές εφαρμόζονται αμέσως και διατηρούνται σε όλες τις συνεδρίες
+- **Icona brillant** → autoplay de l'episodi següent **activat**
+- **Icona apagada** → autoplay de l'episodi següent **desactivat**
+- Els canvis s'apliquen immediatament i es mantenen en totes les sessions
 
 ---
 

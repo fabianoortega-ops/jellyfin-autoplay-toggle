@@ -19,7 +19,8 @@
 ---
 
 ### 🌍 Translations
-[🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+[🇧🇷 Português](translations/README.pt.md) · [🇩🇪 Deutsch](translations/README.de.md) · [🇫🇷 Français](translations/README.fr.md) · [🇪🇸 Español](translations/README.es.md) · [🇮🇹 Italiano](translations/README.it.md) · [🇷🇺 Русский](translations/README.ru.md) · [🇨🇳 中文](translations/README.zh.md) · [🇯🇵 日本語](translations/README.ja.md) · [🇰🇷 한국어](translations/README.ko.md) · [🇵🇱 Polski](translations/README.pl.md)  
+[🇸🇪 Svenska](translations/README.sv.md) · [🇳🇴 Norsk](translations/README.nb.md) · [🇩🇰 Dansk](translations/README.da.md) · [🇫🇮 Suomi](translations/README.fi.md) · [🇨🇿 Čeština](translations/README.cs.md) · [🇸🇰 Slovenčina](translations/README.sk.md) · [🇭🇺 Magyar](translations/README.hu.md) · [🇷🇴 Română](translations/README.ro.md) · [🇹🇷 Türkçe](translations/README.tr.md) · [🇸🇦 العربية](translations/README.ar.md) · [🇺🇦 Українська](translations/README.uk.md) · [🇬🇷 Ελληνικά](translations/README.el.md) · [🇪🇸 Català](translations/README.ca.md)  
 *Want to add your language? [Open a PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---

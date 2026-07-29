@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Nettsted](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Installer](#installation) · [🌍 Språk](#supported-languages) · [🐛 Problemer](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Web sitesi](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Kur](#installation) · [🌍 Diller](#supported-languages) · [🐛 Sorunlar](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Oversettelser
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Vil du legge til språket ditt? [Åpne en PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Çeviriler
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Dilinizi eklemek ister misiniz? [PR açın!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Hva det gjør
+## 🎯 Ne yapar
 
-AutoPlay Toggle legger til en **🔁 knapp** mellom favoritt- og undertekstknappen i Jellyfin-videospilleren.
+AutoPlay Toggle, Jellyfin video oynatıcısında favori ve altyazı düğmeleri arasına bir **🔁 düğmesi** ekler.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle legger til en **🔁 knapp** mellom favoritt- og undertekstknapp
   AutoPlay Toggle
 ```
 
-- **Lyst ikon** → autoplay neste episode **på**
-- **Mørkt ikon** → autoplay neste episode **av**
-- Endringer lagres umiddelbart og beholdes i alle sesjoner
+- **Parlak simge** → sonraki bölüm otomatik oynatma **açık**
+- **Soluk simge** → sonraki bölüm otomatik oynatma **kapalı**
+- Değişiklikler anında uygulanır ve tüm oturumlarda kalıcıdır
 
 ---
 

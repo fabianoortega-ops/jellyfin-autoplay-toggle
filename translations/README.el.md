@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Weboldal](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Telepítés](#installation) · [🌍 Nyelvek](#supported-languages) · [🐛 Problémák](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Ιστοσελίδα](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Εγκατάσταση](#installation) · [🌍 Γλώσσες](#supported-languages) · [🐛 Προβλήματα](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Fordítások
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Szeretnéd hozzáadni a nyelvedet? [Nyiss PR-t!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Μεταφράσεις
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Θέλετε να προσθέσετε τη γλώσσα σας; [Ανοίξτε PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Mit csinál
+## 🎯 Τι κάνει
 
-Az AutoPlay Toggle hozzáad egy **🔁 gombot** a kedvencek és a feliratok gomb közé a Jellyfin videólejátszóban.
+Το AutoPlay Toggle προσθέτει ένα **κουμπί 🔁** μεταξύ των κουμπιών αγαπημένων και υποτίτλων στο πρόγραμμα αναπαραγωγής βίντεο Jellyfin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ Az AutoPlay Toggle hozzáad egy **🔁 gombot** a kedvencek és a feliratok gomb
   AutoPlay Toggle
 ```
 
-- **Fényes ikon** → következő rész automatikus lejátszása **be**
-- **Halvány ikon** → következő rész automatikus lejátszása **ki**
-- A változások azonnal érvénybe lépnek és minden munkamenetben megmaradnak
+- **Φωτεινό εικονίδιο** → αυτόματη αναπαραγωγή επόμενου επεισοδίου **ενεργό**
+- **Σκοτεινό εικονίδιο** → αυτόματη αναπαραγωγή επόμενου επεισοδίου **ανενεργό**
+- Οι αλλαγές εφαρμόζονται αμέσως και διατηρούνται σε όλες τις συνεδρίες
 
 ---
 

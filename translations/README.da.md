@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Webová stránka](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instalovat](#installation) · [🌍 Jazyky](#supported-languages) · [🐛 Problémy](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Websted](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Installer](#installation) · [🌍 Sprog](#supported-languages) · [🐛 Problemer](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Překlady
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Chcete přidat svůj jazyk? [Otevřete PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Oversættelser
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Vil du tilføje dit sprog? [Åbn en PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Co to dělá
+## 🎯 Hvad det gør
 
-AutoPlay Toggle přidá **tlačítko 🔁** mezi tlačítko oblíbených a titulků v přehrávači videa Jellyfin.
+AutoPlay Toggle tilføjer en **🔁 knap** mellem favorit- og undertekstknappen i Jellyfin-videoafspilleren.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle přidá **tlačítko 🔁** mezi tlačítko oblíbených a titul
   AutoPlay Toggle
 ```
 
-- **Světlá ikona** → automatické přehrávání další epizody **zapnuto**
-- **Tmavá ikona** → automatické přehrávání další epizody **vypnuto**
-- Změny se projeví okamžitě a zachovají se ve všech relacích
+- **Lyst ikon** → autoplay næste afsnit **til**
+- **Mørkt ikon** → autoplay næste afsnit **fra**
+- Ændringer anvendes øjeblikkeligt og bevares i alle sessioner
 
 ---
 

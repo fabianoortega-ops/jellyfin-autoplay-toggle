@@ -2,7 +2,8 @@
 
 <img src="banner.svg" alt="AutoPlay Toggle" width="100%">
 
-<br/><br/>
+<br/>
+<br/>
 
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
 [![License](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
@@ -11,23 +12,23 @@
 
 <br/>
 
-**[🌐 الموقع](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 تثبيت](#installation) · [🌍 اللغات](#supported-languages) · [🐛 المشكلات](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 网站](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 安装](#installation) · [🌍 语言](#supported-languages) · [🐛 问题](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 الترجمات
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*هل تريد إضافة لغتك؟ [افتح PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 翻译
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*想添加您的语言？ [提交 PR！](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 ما الذي يفعله
+## 🎯 功能介绍
 
-يضيف AutoPlay Toggle **زراً 🔁** بين زر المفضلة وزر الترجمة في مشغل فيديو Jellyfin.
+AutoPlay Toggle 在 Jellyfin 视频播放器的收藏和字幕按钮之间添加了一个 **🔁 按钮**。单击即可启用或禁用下一集的自动播放——无需菜单，无需设置页面。
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,48 +36,50 @@
   AutoPlay Toggle
 ```
 
-- **أيقونة مضيئة** → التشغيل التلقائي للحلقة التالية **مفعّل**
-- **أيقونة خافتة** → التشغيل التلقائي للحلقة التالية **معطّل**
-- التغييرات فورية وتستمر في جميع الجلسات
+- **亮图标** → 下一集自动播放**开启**
+- **暗图标** → 下一集自动播放**关闭**
+- 更改立即生效并在所有会话中保持
 
 ---
 
-## ✨ Features
+## ✨ 功能
 
-| Feature | Description |
+| 功能 | 描述 |
 |---|---|
-| 🎮 **In-Player Button** | Sits between ♥ and CC — right where you need it |
-| ⚡ **Instant Toggle** | Changes apply immediately, no page reload |
-| 🌍 **25 Languages** | Auto-detects your browser language |
+| 🎮 **播放器内按钮** | 位于 ♥ 和 CC 之间——正好在需要的地方 |
+| ⚡ **即时切换** | 更改立即应用，无需重新加载 |
+| 🌍 **25种语言** | 自动检测浏览器语言 |
 | 🔧 **REST API** | `GET /AutoPlay/Status` · `POST /AutoPlay/Toggle` |
-| 📊 **Dashboard Panel** | Also accessible from the Jellyfin sidebar |
-| 🚀 **Hot Reload** | UI updates via `git push` — no server restart needed |
+| 📊 **仪表板面板** | 也可通过 Jellyfin 侧栏访问 |
+| 🚀 **热重载** | 通过 `git push` 更新界面——无需重启服务器 |
 
 ---
 
-## 📦 Installation
+## 📦 安装
 
-> **Requires** the [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) plugin by n00bcodr. Install it first from the Jellyfin Catalog.
+> **需要** n00bcodr 的 [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) 插件。请先从 Jellyfin 目录安装。
 
-**1. Add the repository**
+**1. 添加仓库**
 
-Go to **Dashboard → Plugins → Repositories → +** and add:
+前往 **Dashboard → Plugins → Repositories → +** 并添加：
 
 ```
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. Install the plugin**
+**2. 安装插件**
 
-Go to **Catalog**, find **AutoPlay Toggle** and click **Install**.
+前往 **Catalog**，找到 **AutoPlay Toggle** 并点击 **Install**。
 
-**3. Restart Jellyfin**
+**3. 重启 Jellyfin**
 
-Restart once to load the plugin. The 🔁 button will appear automatically in the player.
+重启一次以加载插件。🔁 按钮将自动出现在播放器中。
 
 ---
 
-## 🌍 Supported Languages
+## 🌍 支持的语言
+
+按钮提示自动以浏览器语言显示。
 
 | Language | Code | On | Off |
 |---|---|---|---|
@@ -106,9 +109,13 @@ Restart once to load the plugin. The 🔁 button will appear automatically in th
 | Ελληνικά | `el` | Επόμενο επεισόδιο: Ενεργό | Επόμενο επεισόδιο: Ανενεργό |
 | Català | `ca` | Episodi següent: Activat | Episodi següent: Desactivat |
 
+缺少您的语言？[提交 issue](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues) 或发送 PR。
+
 ---
 
-## 💬 Community
+## 💬 社区
+
+加入 Jellyfin 社区：
 
 | Platform | Link |
 |---|---|
@@ -120,29 +127,29 @@ Restart once to load the plugin. The 🔁 button will appear automatically in th
 
 ---
 
-## 🔗 Related
+## 🔗 相关项目
 
-- [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Required dependency.
-- [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Adds ratings, badges, OSD improvements and more.
-- [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Automatically skips intros and credits.
-- [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — A curated list of Jellyfin plugins and tools.
-- [Jellyfin](https://github.com/jellyfin/jellyfin) — The free media system this plugin is built for.
+- [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — 必需依赖。向 Jellyfin 界面注入 JavaScript。
+- [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — 添加评分、标签徽章、OSD 改进等更多功能。
+- [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — 自动检测并跳过片头、字幕和回顾。
+- [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — 精选的 Jellyfin 插件、主题和工具列表。
+- [Jellyfin](https://github.com/jellyfin/jellyfin) — 此插件为之构建的免费媒体系统。
 
 ---
 
-## 🤝 Contributing
+## 🤝 贡献
 
-- 🌍 **Translate** — add a `README.xx.md` for your language
-- 🐛 **Report bugs** — [open an issue](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)
-- 💡 **Suggest features** — ideas are welcome
-- ⭐ **Star the repo** — helps others discover it
+- 🌍 **翻译** — 为您的语言添加 `README.xx.md`
+- 🐛 **报告错误** — [提交 issue](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)
+- 💡 **建议功能** — 欢迎提出想法
+- ⭐ **给仓库加星** — 帮助他人发现此插件
 
 ---
 
 <div align="center">
 
-Made with ♥ for the [Jellyfin](https://jellyfin.org) community
+用 ♥ 为 [Jellyfin](https://jellyfin.org) 社区制作
 
-[MIT License](LICENSE) · [Website](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [Releases](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
+[MIT 许可证](LICENSE) · [网站](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [发布](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>

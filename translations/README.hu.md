@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Сайт](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Встановити](#installation) · [🌍 Мови](#supported-languages) · [🐛 Проблеми](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Weboldal](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Telepítés](#installation) · [🌍 Nyelvek](#supported-languages) · [🐛 Problémák](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Переклади
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Хочете додати свою мову? [Відкрийте PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Fordítások
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Szeretnéd hozzáadni a nyelvedet? [Nyiss PR-t!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Що це робить
+## 🎯 Mit csinál
 
-AutoPlay Toggle додає **кнопку 🔁** між кнопками вибраного та субтитрів у відеоплеєрі Jellyfin.
+Az AutoPlay Toggle hozzáad egy **🔁 gombot** a kedvencek és a feliratok gomb közé a Jellyfin videólejátszóban.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle додає **кнопку 🔁** між кнопками виб�
   AutoPlay Toggle
 ```
 
-- **Яскрава іконка** → автовідтворення наступного епізоду **увімкнено**
-- **Тьмяна іконка** → автовідтворення наступного епізоду **вимкнено**
-- Зміни застосовуються миттєво та зберігаються в усіх сесіях
+- **Fényes ikon** → következő rész automatikus lejátszása **be**
+- **Halvány ikon** → következő rész automatikus lejátszása **ki**
+- A változások azonnal érvénybe lépnek és minden munkamenetben megmaradnak
 
 ---
 

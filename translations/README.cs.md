@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Webová stránka](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Inštalovať](#installation) · [🌍 Jazyky](#supported-languages) · [🐛 Problémy](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Webová stránka](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instalovat](#installation) · [🌍 Jazyky](#supported-languages) · [🐛 Problémy](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Preklady
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Chcete pridať svoj jazyk? [Otvorte PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Překlady
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Chcete přidat svůj jazyk? [Otevřete PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Čo to robí
+## 🎯 Co to dělá
 
-AutoPlay Toggle pridá **tlačidlo 🔁** medzi tlačidlo obľúbených a titulkov v prehrávači videa Jellyfin.
+AutoPlay Toggle přidá **tlačítko 🔁** mezi tlačítko oblíbených a titulků v přehrávači videa Jellyfin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle pridá **tlačidlo 🔁** medzi tlačidlo obľúbených a titulk
   AutoPlay Toggle
 ```
 
-- **Svetlá ikona** → automatické prehrávanie ďalšej epizódy **zapnuté**
-- **Tmavá ikona** → automatické prehrávanie ďalšej epizódy **vypnuté**
-- Zmeny sa prejavia okamžite a zachovajú sa vo všetkých reláciách
+- **Světlá ikona** → automatické přehrávání další epizody **zapnuto**
+- **Tmavá ikona** → automatické přehrávání další epizody **vypnuto**
+- Změny se projeví okamžitě a zachovají se ve všech relacích
 
 ---
 

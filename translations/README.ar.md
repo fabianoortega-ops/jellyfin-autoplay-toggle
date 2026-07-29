@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Lloc web](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instal·lar](#installation) · [🌍 Idiomes](#supported-languages) · [🐛 Problemes](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 الموقع](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 تثبيت](#installation) · [🌍 اللغات](#supported-languages) · [🐛 المشكلات](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Traduccions
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Voleu afegir el vostre idioma? [Obriu un PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 الترجمات
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*هل تريد إضافة لغتك؟ [افتح PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Què fa
+## 🎯 ما الذي يفعله
 
-AutoPlay Toggle afegeix un **botó 🔁** entre el botó de favorits i el de subtítols al reproductor de vídeo de Jellyfin.
+يضيف AutoPlay Toggle **زراً 🔁** بين زر المفضلة وزر الترجمة في مشغل فيديو Jellyfin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle afegeix un **botó 🔁** entre el botó de favorits i el de sub
   AutoPlay Toggle
 ```
 
-- **Icona brillant** → autoplay de l'episodi següent **activat**
-- **Icona apagada** → autoplay de l'episodi següent **desactivat**
-- Els canvis s'apliquen immediatament i es mantenen en totes les sessions
+- **أيقونة مضيئة** → التشغيل التلقائي للحلقة التالية **مفعّل**
+- **أيقونة خافتة** → التشغيل التلقائي للحلقة التالية **معطّل**
+- التغييرات فورية وتستمر في جميع الجلسات
 
 ---
 

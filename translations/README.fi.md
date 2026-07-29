@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Websted](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Installer](#installation) · [🌍 Sprog](#supported-languages) · [🐛 Problemer](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Verkkosivusto](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Asenna](#installation) · [🌍 Kielet](#supported-languages) · [🐛 Ongelmat](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Oversættelser
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Vil du tilføje dit sprog? [Åbn en PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Käännökset
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Haluatko lisätä kielesi? [Avaa PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Hvad det gør
+## 🎯 Mitä se tekee
 
-AutoPlay Toggle tilføjer en **🔁 knap** mellem favorit- og undertekstknappen i Jellyfin-videoafspilleren.
+AutoPlay Toggle lisää **🔁 painikkeen** Jellyfin-videosoittimen suosikki- ja tekstityspainikkeen väliin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle tilføjer en **🔁 knap** mellem favorit- og undertekstknappen 
   AutoPlay Toggle
 ```
 
-- **Lyst ikon** → autoplay næste afsnit **til**
-- **Mørkt ikon** → autoplay næste afsnit **fra**
-- Ændringer anvendes øjeblikkeligt og bevares i alle sessioner
+- **Kirkas kuvake** → seuraavan jakson automaattinen toisto **päällä**
+- **Tumma kuvake** → seuraavan jakson automaattinen toisto **pois päältä**
+- Muutokset tallennetaan välittömästi kaikissa istunnoissa
 
 ---
 

@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Web sitesi](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Kur](#installation) · [🌍 Diller](#supported-languages) · [🐛 Sorunlar](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Site web](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instalare](#installation) · [🌍 Limbi](#supported-languages) · [🐛 Probleme](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Çeviriler
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Dilinizi eklemek ister misiniz? [PR açın!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Traduceri
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Vrei să adaugi limba ta? [Deschide un PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Ne yapar
+## 🎯 Ce face
 
-AutoPlay Toggle, Jellyfin video oynatıcısında favori ve altyazı düğmeleri arasına bir **🔁 düğmesi** ekler.
+AutoPlay Toggle adaugă un **buton 🔁** între butonul de favorite și cel de subtitrare în playerul video Jellyfin.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle, Jellyfin video oynatıcısında favori ve altyazı düğmeleri 
   AutoPlay Toggle
 ```
 
-- **Parlak simge** → sonraki bölüm otomatik oynatma **açık**
-- **Soluk simge** → sonraki bölüm otomatik oynatma **kapalı**
-- Değişiklikler anında uygulanır ve tüm oturumlarda kalıcıdır
+- **Pictogramă luminoasă** → autoplay episod următor **activat**
+- **Pictogramă întunecată** → autoplay episod următor **dezactivat**
+- Modificările sunt imediate și persistă în toate sesiunile
 
 ---
 

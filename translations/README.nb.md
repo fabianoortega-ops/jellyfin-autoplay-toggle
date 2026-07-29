@@ -11,23 +11,23 @@
 
 <br/>
 
-**[🌐 Site web](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Instalare](#installation) · [🌍 Limbi](#supported-languages) · [🐛 Probleme](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
+**[🌐 Nettsted](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [📦 Installer](#installation) · [🌍 Språk](#supported-languages) · [🐛 Problemer](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues)**
 
 <br/>
 
 ---
 
-### 🌍 Traduceri
-[🇬🇧 English](README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
-*Vrei să adaugi limba ta? [Deschide un PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
+### 🌍 Oversettelser
+[🇬🇧 English](../README.md) · [🇧🇷 Português](README.pt.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇮🇹 Italiano](README.it.md) · [🇷🇺 Русский](README.ru.md) · [🇨🇳 中文](README.zh.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇵🇱 Polski](README.pl.md)  
+*Vil du legge til språket ditt? [Åpne en PR!](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/pulls)*
 
 ---
 
 </div>
 
-## 🎯 Ce face
+## 🎯 Hva det gjør
 
-AutoPlay Toggle adaugă un **buton 🔁** între butonul de favorite și cel de subtitrare în playerul video Jellyfin.
+AutoPlay Toggle legger til en **🔁 knapp** mellom favoritt- og undertekstknappen i Jellyfin-videospilleren.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -35,9 +35,9 @@ AutoPlay Toggle adaugă un **buton 🔁** între butonul de favorite și cel de 
   AutoPlay Toggle
 ```
 
-- **Pictogramă luminoasă** → autoplay episod următor **activat**
-- **Pictogramă întunecată** → autoplay episod următor **dezactivat**
-- Modificările sunt imediate și persistă în toate sesiunile
+- **Lyst ikon** → autoplay neste episode **på**
+- **Mørkt ikon** → autoplay neste episode **av**
+- Endringer lagres umiddelbart og beholdes i alle sesjoner
 
 ---
 
