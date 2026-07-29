@@ -97,15 +97,22 @@
         console.log('[AutoPlayToggle] Botão injetado.');
     }
 
-    // OSD só aparece quando o mouse se move no player — é o momento exato
-    // para injetar o botão. Nenhum MutationObserver em document.body.
+    // Quando o vídeo começa a tocar o OSD aparece automaticamente —
+    // injetamos logo após. Evento no capture phase é leve e preciso.
+    document.addEventListener('play', function(e) {
+        if (e.target && e.target.tagName === 'VIDEO') {
+            setTimeout(inject, 600); // aguarda OSD renderizar
+        }
+    }, true);
+
+    // Mousemove: OSD aparece com movimento — debounce curto para resposta rápida
     var _t = null;
     document.addEventListener('mousemove', function() {
         clearTimeout(_t);
-        _t = setTimeout(inject, 150);
+        _t = setTimeout(inject, 60);
     }, { passive: true });
 
-    // Safety net de baixíssimo custo: só verifica se o botão sumiu
+    // Safety net de baixíssimo custo
     setInterval(inject, 4000);
     console.log('[AutoPlayToggle] Script carregado.');
 }());
