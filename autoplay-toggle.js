@@ -97,6 +97,15 @@
         console.log('[AutoPlayToggle] Botão injetado.');
     }
 
-    new MutationObserver(inject).observe(document.body, { childList: true, subtree: true });
+    // MutationObserver para injeção rápida quando OSD aparece
+    // setInterval como safety net — Jellyfin Enhanced re-renderiza os controles
+    // constantemente e o observer pode perder o momento exato
+    var _t = null;
+    new MutationObserver(function() {
+        clearTimeout(_t);
+        _t = setTimeout(inject, 80); // debounce: espera OSD estabilizar
+    }).observe(document.body, { childList: true, subtree: true });
+
+    setInterval(inject, 1500); // fallback a cada 1.5s
     console.log('[AutoPlayToggle] Script carregado.');
 }());
