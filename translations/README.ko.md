@@ -135,7 +135,6 @@ Jellyfin 커뮤니티에 참여하세요:
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -143,6 +142,7 @@ Jellyfin 커뮤니티에 참여하세요:
 ## 🔗 관련 프로젝트
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — 필수 의존성. Jellyfin 인터페이스에 JavaScript를 주입합니다.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Docker/TrueNAS 권한 문제 해결. JavaScript Injector 액세스 거부 오류 시 필요.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — 평점, 태그 배지, OSD 개선 등을 추가합니다.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — 인트로, 크레딧, 리캡을 자동으로 감지하고 건너뜁니다.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Jellyfin 플러그인, 테마, 도구의 큐레이션 목록.

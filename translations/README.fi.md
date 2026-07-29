@@ -127,7 +127,6 @@ Restart once to load both plugins. The 🔁 button will appear automatically bet
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -135,6 +134,7 @@ Restart once to load both plugins. The 🔁 button will appear automatically bet
 ## 🔗 Related
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Required dependency.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Resolves permission issues on Docker/TrueNAS installs. Required if JavaScript Injector shows access denied errors.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Adds ratings, badges, OSD improvements and more.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Automatically skips intros and credits.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — A curated list of Jellyfin plugins and tools.

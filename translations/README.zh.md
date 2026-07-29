@@ -135,7 +135,6 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -143,6 +142,7 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ## 🔗 相关项目
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — 必需依赖。向 Jellyfin 界面注入 JavaScript。
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — 解决 Docker/TrueNAS 权限问题。若 JavaScript Injector 显示访问被拒绝则需要。
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — 添加评分、标签徽章、OSD 改进等更多功能。
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — 自动检测并跳过片头、字幕和回顾。
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — 精选的 Jellyfin 插件、主题和工具列表。

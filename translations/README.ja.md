@@ -135,7 +135,6 @@ Jellyfinコミュニティに参加：
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -143,6 +142,7 @@ Jellyfinコミュニティに参加：
 ## 🔗 関連プロジェクト
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — 必須依存関係。JellyfinインターフェースにJavaScriptを注入します。
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Docker/TrueNASの権限問題を解決。JavaScript Injectorでアクセス拒否エラーが出る場合に必要。
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — 評価、タグバッジ、OSD改善などを追加します。
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — イントロ、エンドクレジット、リキャップを自動検出してスキップします。
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Jellyfinプラグイン、テーマ、ツールのキュレーションリスト。

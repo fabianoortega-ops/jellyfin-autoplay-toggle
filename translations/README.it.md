@@ -134,7 +134,6 @@ Unisciti alla comunità Jellyfin:
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -142,6 +141,7 @@ Unisciti alla comunità Jellyfin:
 ## 🔗 Correlati
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Dipendenza richiesta. Inietta JavaScript nell'interfaccia Jellyfin.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Risolve problemi di permessi su Docker/TrueNAS. Necessario in caso di errori di accesso in JavaScript Injector.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Aggiunge valutazioni, badge, miglioramenti OSD e molto altro.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Rileva e salta automaticamente intro, crediti e riepiloghi.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Una lista curata di plugin, temi e strumenti Jellyfin.

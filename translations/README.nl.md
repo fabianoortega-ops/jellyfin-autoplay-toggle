@@ -135,7 +135,6 @@ Sluit je aan bij de Jellyfin community:
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -143,6 +142,7 @@ Sluit je aan bij de Jellyfin community:
 ## 🔗 Gerelateerd
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Vereiste afhankelijkheid. Injecteert JavaScript in de Jellyfin interface.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Lost permissieproblemen op bij Docker/TrueNAS. Vereist bij toegangsfouten in JavaScript Injector.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Voegt beoordelingen, badges, OSD-verbeteringen en meer toe.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Detecteert en slaat automatisch intro's, aftitelingen en samenvattingen over.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Een gecureerde lijst van Jellyfin plugins, thema's en tools.

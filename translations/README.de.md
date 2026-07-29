@@ -136,7 +136,6 @@ Tritt der Jellyfin-Community bei:
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -144,6 +143,7 @@ Tritt der Jellyfin-Community bei:
 ## 🔗 Verwandte Projekte
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Erforderliche Abhängigkeit. Fügt JavaScript in die Jellyfin-Oberfläche ein.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Behebt Berechtigungsprobleme bei Docker/TrueNAS. Erforderlich bei Zugriffsfehlern im JavaScript Injector.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Fügt Bewertungen, Tag-Abzeichen, OSD-Verbesserungen und vieles mehr hinzu.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Erkennt und überspringt automatisch Intros, Credits und Recaps.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Eine kuratierte Liste großartiger Jellyfin-Plugins, Themes und Tools.

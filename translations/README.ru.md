@@ -135,7 +135,6 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 | 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
 | 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
 | 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
-| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
 | 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
 
 ---
@@ -143,6 +142,7 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ## 🔗 Похожие проекты
 
 - [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Обязательная зависимость. Внедряет JavaScript в интерфейс Jellyfin.
+- [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) — Решает проблемы доступа на Docker/TrueNAS. Необходим при ошибках доступа в JavaScript Injector.
 - [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Добавляет рейтинги, значки, улучшения OSD и многое другое.
 - [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Автоматически определяет и пропускает вступления, титры и повторы.
 - [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Кураторский список плагинов, тем и инструментов Jellyfin.
