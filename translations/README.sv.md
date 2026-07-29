@@ -56,24 +56,39 @@ AutoPlay Toggle lägger till en **🔁 knapp** mellan favorit- och undertextknap
 
 ## 📦 Installation
 
-> **Kräver** plugin [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) av n00bcodr. Installera den först från Jellyfin-katalogen.
+### Step 1 — Install JavaScript Injector (required dependency)
 
-**1. Lägg till repository**
+AutoPlay Toggle requires the [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) plugin by n00bcodr to inject the button into the player.
 
-Gå till **Dashboard → Plugins → Repositories → +** och lägg till:
+Go to **Dashboard → Plugins → Repositories → +** and add:
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> For Jellyfin 10.10.x use: `https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+Go to **Catalog**, find **JavaScript Injector** and click **Install**. Restart Jellyfin.
+
+> **Docker / TrueNAS users:** if you see `Access to the path '/usr/share/jellyfin/web/index.html' is denied` in the logs, also install [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+). It resolves permission issues on containerized installs.
+
+---
+
+### Step 2 — Install AutoPlay Toggle
+
+Go to **Dashboard → Plugins → Repositories → +** and add:
 
 ```
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. Installera plugin**
+Go to **Catalog**, find **AutoPlay Toggle** and click **Install**.
 
-Gå till **Catalog**, hitta **AutoPlay Toggle** och klicka **Install**.
+---
 
-**3. Starta om Jellyfin**
+### Step 3 — Restart Jellyfin
 
-Starta om en gång för att ladda plugin. 🔁 knappen visas automatiskt i spelaren.
-
+Restart once to load both plugins. The 🔁 button will appear automatically between ♥ and CC in the player.
 ---
 
 ## 🌍 Stödda språk

@@ -57,23 +57,39 @@ AutoPlay Toggleは、Jellyfinビデオプレーヤーのお気に入りボタン
 
 ## 📦 インストール
 
-> n00bcodrの[JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)プラグインが**必要**です。先にJellyfinカタログからインストールしてください。
+### ステップ 1 — JavaScript Injector をインストール（必須依存関係）
 
-**1. リポジトリを追加**
+AutoPlay Toggle は、プレーヤーにボタンを注入するために n00bcodr の [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) プラグインが必要です。
 
-**Dashboard → Plugins → Repositories → +**に移動し、以下を追加：
+**Dashboard → Plugins → Repositories → +** に移動し、以下を追加：
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> Jellyfin 10.10.x の場合：`https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+**Catalog** に移動し、**JavaScript Injector** を見つけて **Install** をクリック。Jellyfin を再起動。
+
+> **Docker / TrueNAS ユーザー：** ログに `Access to the path '/usr/share/jellyfin/web/index.html' is denied` が表示される場合は、[File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+) もインストールしてください。
+
+---
+
+### ステップ 2 — AutoPlay Toggle をインストール
+
+**Dashboard → Plugins → Repositories → +** に移動し、以下を追加：
 
 ```
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. プラグインをインストール**
+**Catalog** に移動し、**AutoPlay Toggle** を見つけて **Install** をクリック。
 
-**Catalog**に移動し、**AutoPlay Toggle**を見つけて**Install**をクリック。
+---
 
-**3. Jellyfinを再起動**
+### ステップ 3 — Jellyfin を再起動
 
-プラグインを読み込むために一度再起動します。🔁ボタンがプレーヤーに自動的に表示されます。
+両方のプラグインを読み込むために一度再起動します。🔁 ボタンがプレーヤーの ♥ と CC の間に自動的に表示されます。
 
 ---
 

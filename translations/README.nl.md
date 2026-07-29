@@ -57,9 +57,25 @@ AutoPlay Toggle voegt een **🔁 knop** toe tussen de favoriet- en ondertitelkno
 
 ## 📦 Installatie
 
-> **Vereist** de [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) plugin van n00bcodr. Installeer deze eerst via de Jellyfin Catalogus.
+### Stap 1 — JavaScript Injector installeren (vereiste afhankelijkheid)
 
-**1. Repository toevoegen**
+AutoPlay Toggle vereist het [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) plugin van n00bcodr om de knop in de speler te injecteren.
+
+Ga naar **Dashboard → Plugins → Repositories → +** en voeg toe:
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> Voor Jellyfin 10.10.x gebruik: `https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+Ga naar **Catalog**, vind **JavaScript Injector** en klik **Install**. Herstart Jellyfin.
+
+> **Docker / TrueNAS gebruikers:** als je `Access to the path '/usr/share/jellyfin/web/index.html' is denied` in de logs ziet, installeer ook [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+).
+
+---
+
+### Stap 2 — AutoPlay Toggle installeren
 
 Ga naar **Dashboard → Plugins → Repositories → +** en voeg toe:
 
@@ -67,14 +83,13 @@ Ga naar **Dashboard → Plugins → Repositories → +** en voeg toe:
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. Plugin installeren**
+Ga naar **Catalog**, vind **AutoPlay Toggle** en klik **Install**.
 
-Ga naar **Catalog**, zoek **AutoPlay Toggle** en klik op **Install**.
+---
 
-**3. Jellyfin herstarten**
+### Stap 3 — Jellyfin herstarten
 
-Herstart eenmalig om de plugin te laden. De 🔁 knop verschijnt automatisch in de speler.
-
+Herstart eenmalig om beide plugins te laden. De 🔁 knop verschijnt automatisch tussen ♥ en CC in de speler.
 ---
 
 ## 🌍 Ondersteunde talen

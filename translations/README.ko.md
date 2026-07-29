@@ -57,23 +57,39 @@ AutoPlay Toggle은 Jellyfin 비디오 플레이어의 즐겨찾기와 자막 버
 
 ## 📦 설치
 
-> n00bcodr의 [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) 플러그인이 **필요**합니다. 먼저 Jellyfin 카탈로그에서 설치해 주세요.
+### 1단계 — JavaScript Injector 설치 (필수 의존성)
 
-**1. 저장소 추가**
+AutoPlay Toggle은 플레이어에 버튼을 주입하기 위해 n00bcodr의 [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) 플러그인이 필요합니다.
 
-**Dashboard → Plugins → Repositories → +**로 이동하여 추가:
+**Dashboard → Plugins → Repositories → +** 로 이동하여 추가:
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> Jellyfin 10.10.x의 경우: `https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+**Catalog** 로 이동하여 **JavaScript Injector** 를 찾아 **Install** 을 클릭하세요. Jellyfin을 재시작하세요.
+
+> **Docker / TrueNAS 사용자:** 로그에 `Access to the path '/usr/share/jellyfin/web/index.html' is denied` 가 나타나면 [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+)도 설치하세요.
+
+---
+
+### 2단계 — AutoPlay Toggle 설치
+
+**Dashboard → Plugins → Repositories → +** 로 이동하여 추가:
 
 ```
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. 플러그인 설치**
+**Catalog** 로 이동하여 **AutoPlay Toggle** 을 찾아 **Install** 을 클릭하세요.
 
-**Catalog**로 이동하여 **AutoPlay Toggle**을 찾아 **Install**을 클릭하세요.
+---
 
-**3. Jellyfin 재시작**
+### 3단계 — Jellyfin 재시작
 
-플러그인을 로드하기 위해 한 번 재시작하세요. 🔁 버튼이 플레이어에 자동으로 나타납니다.
+두 플러그인을 로드하기 위해 한 번 재시작하세요. 🔁 버튼이 플레이어의 ♥ 와 CC 사이에 자동으로 나타납니다.
 
 ---
 

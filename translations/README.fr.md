@@ -57,9 +57,25 @@ AutoPlay Toggle ajoute un **bouton 🔁** entre le bouton favori et le bouton so
 
 ## 📦 Installation
 
-> **Nécessite** le plugin [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) de n00bcodr. Installez-le d'abord depuis le Catalogue Jellyfin.
+### Étape 1 — Installer JavaScript Injector (dépendance requise)
 
-**1. Ajouter le dépôt**
+AutoPlay Toggle nécessite le plugin [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) de n00bcodr pour injecter le bouton dans le lecteur.
+
+Allez dans **Dashboard → Plugins → Repositories → +** et ajoutez :
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> Pour Jellyfin 10.10.x utilisez : `https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+Allez dans **Catalog**, trouvez **JavaScript Injector** et cliquez **Install**. Redémarrez Jellyfin.
+
+> **Utilisateurs Docker / TrueNAS :** si vous voyez `Access to the path '/usr/share/jellyfin/web/index.html' is denied` dans les logs, installez aussi [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+).
+
+---
+
+### Étape 2 — Installer AutoPlay Toggle
 
 Allez dans **Dashboard → Plugins → Repositories → +** et ajoutez :
 
@@ -67,14 +83,13 @@ Allez dans **Dashboard → Plugins → Repositories → +** et ajoutez :
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. Installer le plugin**
+Allez dans **Catalog**, trouvez **AutoPlay Toggle** et cliquez **Install**.
 
-Allez dans **Catalog**, trouvez **AutoPlay Toggle** et cliquez sur **Install**.
+---
 
-**3. Redémarrer Jellyfin**
+### Étape 3 — Redémarrer Jellyfin
 
-Redémarrez une fois pour charger le plugin. Le bouton 🔁 apparaîtra automatiquement dans le lecteur.
-
+Redémarrez une fois pour charger les deux plugins. Le bouton 🔁 apparaîtra automatiquement entre ♥ et CC dans le lecteur.
 ---
 
 ## 🌍 Langues supportées

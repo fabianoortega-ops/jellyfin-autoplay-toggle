@@ -57,9 +57,25 @@ AutoPlay Toggle 在 Jellyfin 视频播放器的收藏和字幕按钮之间添加
 
 ## 📦 安装
 
-> **需要** n00bcodr 的 [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) 插件。请先从 Jellyfin 目录安装。
+### 第一步 — 安装 JavaScript Injector（必需依赖）
 
-**1. 添加仓库**
+AutoPlay Toggle 需要 n00bcodr 的 [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) 插件来将按钮注入播放器。
+
+前往 **Dashboard → Plugins → Repositories → +** 并添加：
+
+```
+https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.11/manifest.json
+```
+
+> Jellyfin 10.10.x 请使用：`https://raw.githubusercontent.com/n00bcodr/jellyfin-plugins/main/10.10/manifest.json`
+
+前往 **Catalog**，找到 **JavaScript Injector** 并点击 **Install**。重启 Jellyfin。
+
+> **Docker / TrueNAS 用户：** 如果日志中出现 `Access to the path '/usr/share/jellyfin/web/index.html' is denied`，还需安装 [File Transformation](https://github.com/IAmParadox27/jellyfin-plugin-file-transformation) (v2.2.1.0+)。
+
+---
+
+### 第二步 — 安装 AutoPlay Toggle
 
 前往 **Dashboard → Plugins → Repositories → +** 并添加：
 
@@ -67,13 +83,13 @@ AutoPlay Toggle 在 Jellyfin 视频播放器的收藏和字幕按钮之间添加
 https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 ```
 
-**2. 安装插件**
-
 前往 **Catalog**，找到 **AutoPlay Toggle** 并点击 **Install**。
 
-**3. 重启 Jellyfin**
+---
 
-重启一次以加载插件。🔁 按钮将自动出现在播放器中。
+### 第三步 — 重启 Jellyfin
+
+重启一次以加载两个插件。🔁 按钮将自动出现在播放器的 ♥ 和 CC 之间。
 
 ---
 
