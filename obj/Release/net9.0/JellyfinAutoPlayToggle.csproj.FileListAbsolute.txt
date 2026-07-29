@@ -10,3 +10,4 @@ D:\AUTOPLAY_TOOGLE\JellyfinAutoPlayToggle\obj\Release\net9.0\JellyfinAutoPlayTog
 D:\AUTOPLAY_TOOGLE\JellyfinAutoPlayToggle\obj\Release\net9.0\refint\JellyfinAutoPlayToggle.dll
 D:\AUTOPLAY_TOOGLE\JellyfinAutoPlayToggle\obj\Release\net9.0\JellyfinAutoPlayToggle.pdb
 D:\AUTOPLAY_TOOGLE\JellyfinAutoPlayToggle\obj\Release\net9.0\ref\JellyfinAutoPlayToggle.dll
+D:\AUTOPLAY_TOOGLE\JellyfinAutoPlayToggle\obj\Release\net9.0\JellyfinAutoPlayToggle.sourcelink.json
