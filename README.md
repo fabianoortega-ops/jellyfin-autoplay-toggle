@@ -113,6 +113,20 @@ Missing your language? [Open an issue](https://github.com/fabianoortega-ops/jell
 
 ---
 
+## 💬 Community
+
+Join the Jellyfin community to get help, share feedback, or just hang out:
+
+| Platform | Link |
+|---|---|
+| 💬 Discord (Official) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
+| 💬 Discord (Community) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
+| 🌐 Forum | [forum.jellyfin.org](https://forum.jellyfin.org) |
+| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
+| 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! You can help by:
