@@ -1,23 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0d1b2a"/>
-      <stop offset="100%" stop-color="#001a24"/>
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="50%" stop-color="#001a24"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
   <rect width="256" height="256" rx="32" fill="url(#bg)"/>
 
-  <!-- Outer ring (repeat arrows) -->
-  <!-- Top arrow going right -->
-  <path d="M 72 90 A 56 56 0 0 1 184 90" fill="none" stroke="#00a4dc" stroke-width="14" stroke-linecap="round"/>
-  <polygon points="184,72 200,90 184,108" fill="#00a4dc"/>
+  <!-- 🔁 emoji rendered as text -->
+  <text x="128" y="130" font-size="80" text-anchor="middle" dominant-baseline="middle">🔁</text>
 
-  <!-- Bottom arrow going left -->
-  <path d="M 184 166 A 56 56 0 0 1 72 166" fill="none" stroke="#00a4dc" stroke-width="14" stroke-linecap="round"/>
-  <polygon points="72,148 56,166 72,184" fill="#00a4dc"/>
+  <!-- AutoPlay in white -->
+  <text x="128" y="182" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
 
-  <!-- Play triangle in center -->
-  <polygon points="108,100 108,156 164,128" fill="#ffffff" opacity="0.95"/>
+  <!-- Toggle in Jellyfin blue -->
+  <text x="128" y="214" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
 </svg>
