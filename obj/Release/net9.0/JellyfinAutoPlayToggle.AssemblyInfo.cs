@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JellyfinAutoPlayToggle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b774e99ece5d3f2ead4bb7ee7a7f6097142cc16")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f9b5e4673d5a65b4afb4adb4474468d2438d71b")]
 [assembly: System.Reflection.AssemblyProductAttribute("JellyfinAutoPlayToggle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JellyfinAutoPlayToggle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

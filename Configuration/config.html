@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>AutoPlay Toggle</title>
-    <style>
-        .apt-card { background:#1c1c1c; border:1px solid #333; border-radius:10px; padding:24px; max-width:480px; margin:24px auto; }
-        .apt-title { font-size:1.4em; font-weight:600; color:#e0e0e0; margin-bottom:6px; }
-        .apt-subtitle { font-size:0.9em; color:#888; margin-bottom:24px; }
-        .apt-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
-        .apt-label { font-size:1em; color:#ccc; }
-        .apt-switch { position:relative; display:inline-block; width:56px; height:30px; }
-        .apt-switch input { opacity:0; width:0; height:0; }
-        .apt-slider { position:absolute; cursor:pointer; inset:0; background:#555; border-radius:30px; transition:background 0.3s; }
-        .apt-slider:before { content:""; position:absolute; width:22px; height:22px; left:4px; bottom:4px; background:white; border-radius:50%; transition:transform 0.3s; }
-        input:checked + .apt-slider { background:#00a4dc; }
-        input:checked + .apt-slider:before { transform:translateX(26px); }
-        .apt-badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.82em; font-weight:600; text-transform:uppercase; }
-        .apt-badge-on  { background:#00a4dc22; color:#00a4dc; border:1px solid #00a4dc55; }
-        .apt-badge-off { background:#ff444422; color:#ff6666; border:1px solid #ff444455; }
-        .apt-badge-loading { background:#44444422; color:#888; border:1px solid #44444455; }
-        .apt-hint { font-size:0.82em; color:#666; margin-top:16px; line-height:1.5; }
-        .apt-error { color:#ff6666; font-size:0.88em; margin-top:10px; display:none; font-family:monospace; }
-    </style>
-</head>
-<body>
 <div data-role="page" class="page type-interior pluginConfigurationPage AutoPlayToggle">
     <div class="content-primary">
+        <style>
+            .apt-card { background:#1c1c1c; border:1px solid #333; border-radius:10px; padding:24px; max-width:480px; margin:24px auto; }
+            .apt-title { font-size:1.4em; font-weight:600; color:#e0e0e0; margin-bottom:6px; }
+            .apt-subtitle { font-size:0.9em; color:#888; margin-bottom:24px; }
+            .apt-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+            .apt-label { font-size:1em; color:#ccc; }
+            .apt-switch { position:relative; display:inline-block; width:56px; height:30px; }
+            .apt-switch input { opacity:0; width:0; height:0; }
+            .apt-slider { position:absolute; cursor:pointer; inset:0; background:#555; border-radius:30px; transition:background 0.3s; }
+            .apt-slider:before { content:""; position:absolute; width:22px; height:22px; left:4px; bottom:4px; background:white; border-radius:50%; transition:transform 0.3s; }
+            input:checked + .apt-slider { background:#00a4dc; }
+            input:checked + .apt-slider:before { transform:translateX(26px); }
+            .apt-badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.82em; font-weight:600; text-transform:uppercase; }
+            .apt-badge-on  { background:#00a4dc22; color:#00a4dc; border:1px solid #00a4dc55; }
+            .apt-badge-off { background:#ff444422; color:#ff6666; border:1px solid #ff444455; }
+            .apt-badge-load { background:#44444422; color:#888; border:1px solid #44444455; }
+            .apt-hint { font-size:0.82em; color:#666; margin-top:16px; line-height:1.5; }
+            .apt-error { color:#ff6666; font-size:0.85em; margin-top:10px; display:none; }
+        </style>
+
         <div class="apt-card">
-            <div class="apt-title">▶ AutoPlay Toggle</div>
+            <div class="apt-title">▶ AutoPlay Toggle <small style="font-size:0.5em;color:#555;">v1.0.3</small></div>
             <div class="apt-subtitle">Controle o autoplay do próximo episódio sem sair desta página.</div>
             <div class="apt-row">
                 <span class="apt-label">Reproduzir próximo episódio automaticamente</span>
@@ -35,156 +30,134 @@
                     <span class="apt-slider"></span>
                 </label>
             </div>
-            <div class="apt-row" style="justify-content:flex-start; gap:10px;">
-                <span class="apt-label" style="font-size:0.9em; color:#777;">Status:</span>
-                <span id="aptBadge" class="apt-badge apt-badge-loading">carregando…</span>
+            <div class="apt-row" style="justify-content:flex-start;gap:10px;">
+                <span class="apt-label" style="font-size:0.9em;color:#777;">Status:</span>
+                <span id="aptBadge" class="apt-badge apt-badge-load">iniciando…</span>
             </div>
             <div id="aptError" class="apt-error"></div>
             <p class="apt-hint">A alteração é aplicada imediatamente na sua conta do Jellyfin.</p>
         </div>
     </div>
-</div>
 
-<script type="text/javascript">
-(function () {
-    "use strict";
-    var initialized = false;
+    <script type="text/javascript">
+        // O script DEVE ficar dentro do div data-role="page" para o Jellyfin executá-lo
+        (function () {
+            console.log("[APT] v1.0.3 carregado");
 
-    function log(msg) { console.log("[AutoPlayToggle] " + msg); }
-    function err(msg, e) { console.error("[AutoPlayToggle] " + msg, e || ""); }
+            var _done = false;
 
-    function setBadge(state) {
-        var b = document.getElementById("aptBadge");
-        if (state === "on")  { b.textContent = "Ligado";     b.className = "apt-badge apt-badge-on"; }
-        else if (state === "off") { b.textContent = "Desligado"; b.className = "apt-badge apt-badge-off"; }
-        else                 { b.textContent = "carregando…"; b.className = "apt-badge apt-badge-loading"; }
-    }
-
-    function showError(msg) {
-        var el = document.getElementById("aptError");
-        if (msg) { el.textContent = "⚠ " + msg; el.style.display = "block"; }
-        else     { el.style.display = "none"; }
-    }
-
-    function getToken() {
-        try {
-            if (typeof ApiClient.accessToken === "function") return ApiClient.accessToken();
-            if (ApiClient.accessToken)   return ApiClient.accessToken;
-            if (ApiClient._accessToken)  return ApiClient._accessToken;
-        } catch(e) {}
-        return null;
-    }
-
-    function getUserId() {
-        try {
-            if (typeof ApiClient.getCurrentUserId === "function") return ApiClient.getCurrentUserId();
-            if (ApiClient.currentUserId)  return ApiClient.currentUserId;
-            if (ApiClient._currentUserId) return ApiClient._currentUserId;
-        } catch(e) {}
-        return null;
-    }
-
-    function apiFetch(method, path, body) {
-        // Usa window.location.origin — sempre correto pois API e web são o mesmo servidor
-        var url   = window.location.origin + "/" + path;
-        var token = getToken();
-        log(method + " " + url + " (token: " + (token ? "ok" : "NULL") + ")");
-        var opts = {
-            method: method,
-            headers: {
-                "Authorization": 'MediaBrowser Token="' + token + '"',
-                "Content-Type": "application/json"
+            function badge(state) {
+                var b = document.getElementById("aptBadge");
+                if (state === "on")       { b.textContent = "Ligado";     b.className = "apt-badge apt-badge-on"; }
+                else if (state === "off") { b.textContent = "Desligado";  b.className = "apt-badge apt-badge-off"; }
+                else                      { b.textContent = state;        b.className = "apt-badge apt-badge-load"; }
             }
-        };
-        if (body) opts.body = JSON.stringify(body);
-        return fetch(url, opts);
-    }
 
-    function loadStatus(userId) {
-        apiFetch("GET", "AutoPlay/Status/" + userId)
-            .then(function(r) {
-                log("Status HTTP: " + r.status);
-                if (!r.ok) throw new Error("HTTP " + r.status);
-                return r.json();
-            })
-            .then(function(data) {
-                log("Resposta: " + JSON.stringify(data));
-                var toggle = document.getElementById("aptToggle");
-                toggle.checked  = data.enableNextEpisodeAutoPlay;
-                toggle.disabled = false;
-                setBadge(data.enableNextEpisodeAutoPlay ? "on" : "off");
-                showError(null);
-            })
-            .catch(function(e) {
-                err("loadStatus falhou:", e);
-                showError("Erro: " + e.message + " — veja o console (F12)");
-                setBadge("loading");
-            });
-    }
+            function showErr(msg) {
+                var e = document.getElementById("aptError");
+                if (msg) { e.textContent = "⚠ " + msg; e.style.display = "block"; }
+                else     { e.style.display = "none"; }
+            }
 
-    function saveStatus(userId, newValue) {
-        var toggle = document.getElementById("aptToggle");
-        toggle.disabled = true;
-        setBadge("loading");
-        showError(null);
+            function getToken() {
+                try {
+                    var ac = window.ApiClient;
+                    if (!ac) return null;
+                    if (typeof ac.accessToken === "function") return ac.accessToken();
+                    return ac.accessToken || ac._accessToken || null;
+                } catch(e) { return null; }
+            }
 
-        apiFetch("POST", "AutoPlay/Toggle", { UserId: userId, Enable: newValue })
-            .then(function(r) {
-                if (!r.ok) throw new Error("HTTP " + r.status);
-                return r.json();
-            })
-            .then(function(data) {
-                toggle.disabled = false;
-                toggle.checked  = data.enableNextEpisodeAutoPlay;
-                setBadge(data.enableNextEpisodeAutoPlay ? "on" : "off");
-            })
-            .catch(function(e) {
-                err("saveStatus falhou:", e);
-                toggle.checked  = !newValue;
-                toggle.disabled = false;
-                setBadge(!newValue ? "on" : "off");
-                showError("Erro ao salvar: " + e.message);
-            });
-    }
+            function getUserId() {
+                try {
+                    var ac = window.ApiClient;
+                    if (!ac) return null;
+                    if (typeof ac.getCurrentUserId === "function") return ac.getCurrentUserId();
+                    return ac.currentUserId || ac._currentUserId || null;
+                } catch(e) { return null; }
+            }
 
-    function init() {
-        if (initialized) return;
+            function callApi(method, path, body) {
+                var url   = window.location.origin + "/" + path;
+                var token = getToken();
+                console.log("[APT] " + method + " " + url + " token=" + (token ? "ok" : "NULL"));
+                return fetch(url, {
+                    method: method,
+                    headers: {
+                        "Authorization": 'MediaBrowser Token="' + token + '"',
+                        "Content-Type":  "application/json"
+                    },
+                    body: body ? JSON.stringify(body) : undefined
+                });
+            }
 
-        if (typeof ApiClient === "undefined") {
-            log("ApiClient ainda não disponível, aguardando...");
-            setTimeout(init, 200);
-            return;
-        }
+            function loadStatus(userId) {
+                badge("carregando…");
+                callApi("GET", "AutoPlay/Status/" + userId)
+                    .then(function(r) {
+                        console.log("[APT] HTTP " + r.status);
+                        if (!r.ok) throw new Error("HTTP " + r.status);
+                        return r.json();
+                    })
+                    .then(function(d) {
+                        console.log("[APT] " + JSON.stringify(d));
+                        var t = document.getElementById("aptToggle");
+                        t.checked  = d.enableNextEpisodeAutoPlay;
+                        t.disabled = false;
+                        badge(d.enableNextEpisodeAutoPlay ? "on" : "off");
+                        showErr(null);
+                    })
+                    .catch(function(e) {
+                        console.error("[APT] loadStatus falhou: " + e);
+                        badge("erro");
+                        showErr(e.message);
+                    });
+            }
 
-        var userId = getUserId();
-        var token  = getToken();
+            function saveStatus(userId, val) {
+                var t = document.getElementById("aptToggle");
+                t.disabled = true;
+                badge("salvando…");
+                callApi("POST", "AutoPlay/Toggle", { UserId: userId, Enable: val })
+                    .then(function(r) {
+                        if (!r.ok) throw new Error("HTTP " + r.status);
+                        return r.json();
+                    })
+                    .then(function(d) {
+                        t.disabled = false;
+                        t.checked  = d.enableNextEpisodeAutoPlay;
+                        badge(d.enableNextEpisodeAutoPlay ? "on" : "off");
+                    })
+                    .catch(function(e) {
+                        console.error("[APT] saveStatus falhou: " + e);
+                        t.checked  = !val;
+                        t.disabled = false;
+                        badge(!val ? "on" : "off");
+                        showErr(e.message);
+                    });
+            }
 
-        // Diagnóstico completo no console
-        log("=== Diagnóstico ===");
-        log("window.location.origin: " + window.location.origin);
-        log("userId: " + userId);
-        log("token: " + (token ? token.substring(0,8) + "..." : "NULL"));
-        log("ApiClient.serverAddress: " + (typeof ApiClient.serverAddress === "function" ? ApiClient.serverAddress() : ApiClient.serverAddress));
+            function init() {
+                if (_done) return;
+                var ac = window.ApiClient;
+                if (!ac) { setTimeout(init, 200); return; }
+                var uid = getUserId();
+                if (!uid) { setTimeout(init, 200); return; }
+                console.log("[APT] init userId=" + uid);
+                _done = true;
+                loadStatus(uid);
+                document.getElementById("aptToggle").addEventListener("change", function () {
+                    saveStatus(uid, this.checked);
+                });
+            }
 
-        if (!userId) {
-            log("userId vazio, aguardando...");
-            setTimeout(init, 200);
-            return;
-        }
-
-        initialized = true;
-        log("Inicializando para userId=" + userId);
-        loadStatus(userId);
-        document.getElementById("aptToggle").addEventListener("change", function () {
-            saveStatus(userId, this.checked);
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", init);
-    document.addEventListener("viewshow", init);
-    document.addEventListener("pageshow", init);
-    setTimeout(init, 500);
-}());
-</script>
-</body>
-</html>
+            // Jellyfin dispara pageshow no elemento da página após injetar o HTML
+            var page = document.querySelector(".AutoPlayToggle");
+            if (page) {
+                page.addEventListener("pageshow", init);
+                page.addEventListener("viewshow", init);
+            }
+            setTimeout(init, 500);
+        }());
+    </script>
+</div>

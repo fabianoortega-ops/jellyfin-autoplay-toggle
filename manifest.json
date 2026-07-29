@@ -7,12 +7,12 @@
   "category": "General",
   "versions": [
     {
-      "version": "1.0.1.0",
-      "changelog": "## 1.0.1.0\n\n- Switch para ligar/desligar autoplay\n- Compatível com Jellyfin 10.11.x",
+      "version": "1.0.3.0",
+      "changelog": "## 1.0.3.0\n\n- Switch para ligar/desligar autoplay\n- Compatível com Jellyfin 10.11.x",
       "targetAbi": "10.11.0.0",
-      "sourceUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/releases/JellyfinAutoPlayToggle_1.0.1.0.zip",
-      "checksum": "0374bf709249d7a5359ba2eccd3efb69",
-      "timestamp": "2026-07-29T04:18:47Z"
+      "sourceUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/releases/JellyfinAutoPlayToggle_1.0.3.0.zip",
+      "checksum": "69c5ac67b5c55f6e5fd68276e8a56338",
+      "timestamp": "2026-07-29T04:31:46Z"
     }
   ]
 }]
