@@ -181,18 +181,15 @@ namespace JellyfinAutoPlayToggle
     function inject() {
         if (document.getElementById(BTN_ID)) return;
 
-        // O container principal dos controles
-        var anchor = document.querySelector('.buttons.focuscontainer-x');
-        if (!anchor) return;
+        var ref = document.querySelector('.btnFullscreen') ||
+                  document.querySelector('.btnPip') ||
+                  document.querySelector('.btnVideoOsdSettings');
 
-        // btnFullscreen é filho direto do anchor — insere antes dele
-        var ref = anchor.querySelector('.btnFullscreen') ||
-                  anchor.querySelector('.btnPip') ||
-                  anchor.querySelector('.btnVideoOsdSettings');
+        if (!ref) return;
 
         var btn = createButton();
-        if (ref) anchor.insertBefore(btn, ref);
-        else     anchor.appendChild(btn);
+        // Usa ref.parentNode para garantir que o insert é sempre válido
+        ref.parentNode.insertBefore(btn, ref);
 
         console.log('[AutoPlayToggle] Botão injetado no player.');
     }
