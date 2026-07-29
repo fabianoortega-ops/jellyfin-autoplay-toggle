@@ -8,6 +8,7 @@
 [![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11.x-00a4dc?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org)
 [![Licença](https://img.shields.io/github/license/fabianoortega-ops/jellyfin-autoplay-toggle?style=flat-square&color=green)](LICENSE)
 [![Idiomas](https://img.shields.io/badge/idiomas-25-brightgreen?style=flat-square)](#-idiomas-suportados)
+[![JavaScript Injector](https://img.shields.io/badge/requer-JavaScript%20Injector-orange?style=flat-square)](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 
 <br/>
 
@@ -27,7 +28,7 @@
 
 ## 🎯 O que faz
 
-AutoPlay Toggle adiciona um **botão 🔁** entre o botão de favoritos e o de legendas no player de vídeo do Jellyfin. Um clique ativa ou desativa o autoplay do próximo episódio — sem menus, sem páginas de configurações, sem interrupções.
+AutoPlay Toggle adiciona um **botão 🔁** entre o botão de favoritos e o de legendas no player de vídeo do Jellyfin. Um clique ativa ou desativa o autoplay do próximo episódio — sem menus, sem configurações, sem interrupções.
 
 ```
   ♥  🔁  CC  🎵  ─────────  ⚙  ⛶
@@ -78,8 +79,6 @@ Reinicie uma vez para carregar o plugin. O botão 🔁 aparecerá automaticament
 
 ## 🌍 Idiomas Suportados
 
-O tooltip do botão é exibido automaticamente no idioma do seu browser.
-
 | Idioma | Código | Ligado | Desligado |
 |---|---|---|---|
 | English | `en` | Next episode: On | Next episode: Off |
@@ -109,6 +108,32 @@ O tooltip do botão é exibido automaticamente no idioma do seu browser.
 | Català | `ca` | Episodi següent: Activat | Episodi següent: Desactivat |
 
 Falta o seu idioma? [Abra um issue](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues) ou envie um PR.
+
+---
+
+## 💬 Comunidade
+
+Junte-se à comunidade Jellyfin para obter ajuda, compartilhar feedback ou apenas conversar:
+
+| Plataforma | Link |
+|---|---|
+| 💬 Discord (Oficial) | [discord.gg/zHBxVSXdBV](https://discord.gg/zHBxVSXdBV) |
+| 💬 Discord (Comunidade) | [discord.gg/N3M99fNxbK](https://discord.gg/N3M99fNxbK) |
+| 🌐 Fórum | [forum.jellyfin.org](https://forum.jellyfin.org) |
+| 🔷 Matrix | [#jellyfin:matrix.org](https://matrix.to/#/#jellyfin:matrix.org) |
+| 🟠 Reddit | [r/jellyfin](https://www.reddit.com/r/jellyfin) · [r/JellyfinCommunity](https://www.reddit.com/r/JellyfinCommunity) |
+
+---
+
+## 🔗 Relacionados
+
+Outros plugins e ferramentas do Jellyfin que você pode achar úteis:
+
+- [JavaScript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector) — Dependência obrigatória. Injeta JavaScript personalizado na interface do Jellyfin.
+- [Jellyfin Enhanced](https://github.com/MakD/jellyfin-enhanced) — Adiciona avaliações, badges, melhorias no OSD e muito mais.
+- [Intro Skipper](https://github.com/intro-skipper/intro-skipper) — Detecta e pula automaticamente intros, créditos e recaps.
+- [awesome-jellyfin](https://github.com/awesome-jellyfin/awesome-jellyfin) — Lista curada de plugins, temas e ferramentas para o Jellyfin.
+- [Jellyfin](https://github.com/jellyfin/jellyfin) — O sistema de mídia gratuito para o qual este plugin foi criado.
 
 ---
 

@@ -1,0 +1,19 @@
+# Saída de compilação .NET — não versionar
+bin/
+obj/
+
+# Pasta de releases — zips ficam no GitHub Releases, não no repo
+releases/
+
+# Arquivos de usuário do Visual Studio / VS Code
+*.user
+.vs/
+.vscode/
+
+# NuGet
+*.nupkg
+packages/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
