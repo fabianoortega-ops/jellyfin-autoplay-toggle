@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AutoPlay Toggle — A Jellyfin plugin that adds a repeat button directly in the video player to toggle autoplay for the next episode.">
+<meta property="og:title" content="AutoPlay Toggle — Jellyfin Plugin">
+<meta property="og:description" content="Toggle next episode autoplay directly from the player. No more digging through settings.">
+<meta property="og:url" content="https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/">
+<title>AutoPlay Toggle — Jellyfin Plugin</title>
+<style>
+  :root {
+    --jellyfin-blue: #00a4dc;
+    --jellyfin-dark: #101010;
+    --jellyfin-card: #1a1a1a;
+    --jellyfin-border: #2a2a2a;
+    --text-primary: #e0e0e0;
+    --text-muted: #888;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--jellyfin-dark); color: var(--text-primary); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+  a { color: var(--jellyfin-blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0a0a0a 0%, #001a24 50%, #0a0a0a 100%);
+    border-bottom: 1px solid var(--jellyfin-border);
+    padding: 80px 24px 60px;
+    text-align: center;
+  }
+  .hero-icon { font-size: 64px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .hero h1 span { color: var(--jellyfin-blue); }
+  .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 560px; margin: 0 auto 32px; }
+  .badge-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .badge { background: var(--jellyfin-card); border: 1px solid var(--jellyfin-border); border-radius: 20px; padding: 6px 14px; font-size: 0.82em; color: var(--text-muted); }
+  .badge span { color: var(--jellyfin-blue); font-weight: 600; }
+  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all .2s; border: none; }
+  .btn-primary { background: var(--jellyfin-blue); color: #000; }
+  .btn-primary:hover { background: #00bbf7; text-decoration: none; }
+  .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--jellyfin-border); }
+  .btn-secondary:hover { border-color: var(--jellyfin-blue); color: var(--jellyfin-blue); text-decoration: none; }
+
+  /* Demo */
+  .demo {
+    padding: 60px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--jellyfin-border);
+  }
+  .demo-label { font-size: 0.82em; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; }
+  .player-mockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid var(--jellyfin-border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+  }
+  .osd-btn { width: 40px; height: 40px; border-radius: 50%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-primary); font-size: 20px; opacity: .7; transition: opacity .2s; }
+  .osd-btn:hover { opacity: 1; }
+  .osd-btn.highlight { opacity: 1; color: var(--jellyfin-blue); position: relative; }
+  .osd-btn.highlight::after { content: 'AutoPlay Toggle'; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; color: var(--jellyfin-blue); font-weight: 600; }
+  .material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 22px; line-height: 1; display: inline-block; }
+
+  /* Features */
+  .section { padding: 70px 24px; max-width: 1000px; margin: 0 auto; }
+  .section-title { font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .section-sub { color: var(--text-muted); margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card { background: var(--jellyfin-card); border: 1px solid var(--jellyfin-border); border-radius: 12px; padding: 24px; transition: border-color .2s; }
+  .card:hover { border-color: var(--jellyfin-blue); }
+  .card-icon { font-size: 28px; margin-bottom: 12px; }
+  .card h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .card p { font-size: 0.88rem; color: var(--text-muted); }
+
+  /* Install */
+  .install-section { background: linear-gradient(135deg, #001a24, #0a0a0a); border-top: 1px solid var(--jellyfin-border); border-bottom: 1px solid var(--jellyfin-border); padding: 70px 24px; }
+  .install-inner { max-width: 700px; margin: 0 auto; }
+  .step { display: flex; gap: 16px; margin-bottom: 28px; align-items: flex-start; }
+  .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--jellyfin-blue); color: #000; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .step-content h4 { color: #fff; font-size: 1rem; margin-bottom: 4px; }
+  .step-content p { color: var(--text-muted); font-size: 0.9rem; }
+  .code-block { background: #0d0d0d; border: 1px solid var(--jellyfin-border); border-radius: 8px; padding: 14px 16px; font-family: 'Courier New', monospace; font-size: 0.88rem; color: var(--jellyfin-blue); margin-top: 10px; word-break: break-all; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .copy-btn { background: var(--jellyfin-border); border: none; color: var(--text-muted); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; white-space: nowrap; transition: all .2s; }
+  .copy-btn:hover { background: var(--jellyfin-blue); color: #000; }
+  .prereq { background: var(--jellyfin-card); border: 1px solid var(--jellyfin-border); border-left: 3px solid var(--jellyfin-blue); border-radius: 4px; padding: 12px 16px; margin-bottom: 32px; font-size: 0.88rem; color: var(--text-muted); }
+  .prereq a { color: var(--jellyfin-blue); }
+
+  /* Languages */
+  .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .lang-item { background: var(--jellyfin-card); border: 1px solid var(--jellyfin-border); border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; display: flex; align-items: center; gap: 10px; }
+  .lang-code { background: var(--jellyfin-border); border-radius: 4px; padding: 2px 7px; font-family: monospace; font-size: 0.75rem; color: var(--jellyfin-blue); }
+
+  /* Footer */
+  footer { text-align: center; padding: 40px 24px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--jellyfin-border); }
+  footer a { color: var(--text-muted); }
+  footer a:hover { color: var(--jellyfin-blue); }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid var(--jellyfin-border); }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-icon">🔁</div>
+  <h1>AutoPlay <span>Toggle</span></h1>
+  <p>A Jellyfin plugin that adds a repeat button directly in the video player — toggle next episode autoplay without leaving the screen.</p>
+
+  <div class="badge-row">
+    <div class="badge">Jellyfin <span>10.11.x</span></div>
+    <div class="badge">Requires <span>JavaScript Injector</span></div>
+    <div class="badge"><span>25</span> languages</div>
+    <div class="badge">Open Source <span>MIT</span></div>
+  </div>
+
+  <div class="btn-row">
+    <a href="#install" class="btn btn-primary">⚡ Install Now</a>
+    <a href="https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle" class="btn btn-secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</section>
+
+<!-- Demo mockup -->
+<section class="demo">
+  <div class="demo-label">Player controls — button appears between ♥ and CC</div>
+  <div class="player-mockup">
+    <button class="osd-btn" title="Previous">⏮</button>
+    <button class="osd-btn" title="Rewind">⏪</button>
+    <button class="osd-btn" title="Play">▶</button>
+    <button class="osd-btn" title="Fast forward">⏩</button>
+    <button class="osd-btn" title="Next">⏭</button>
+    <span style="width:16px"></span>
+    <button class="osd-btn" title="Favorite">♥</button>
+    <button class="osd-btn highlight" title="Next episode: On" style="margin-bottom:28px">🔁</button>
+    <button class="osd-btn" title="Subtitles">CC</button>
+    <button class="osd-btn" title="Audio">🎵</button>
+    <span style="flex:1;min-width:60px;height:4px;background:#333;border-radius:2px"><span style="display:block;width:65%;height:100%;background:var(--jellyfin-blue);border-radius:2px"></span></span>
+    <button class="osd-btn" title="Settings">⚙</button>
+    <button class="osd-btn" title="Fullscreen">⛶</button>
+  </div>
+</section>
+
+<!-- Features -->
+<div style="border-bottom: 1px solid var(--jellyfin-border)">
+<section class="section">
+  <div class="section-title">✨ Features</div>
+  <div class="section-sub">Everything you need, nothing you don't</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">🎮</div>
+      <h3>In-Player Button</h3>
+      <p>The repeat icon sits between the favorite and subtitle buttons. One click toggles autoplay — no menus, no navigation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Instant & Persistent</h3>
+      <p>Changes apply immediately to your account and sync across all sessions. Bright icon = on, dim icon = off.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌍</div>
+      <h3>25 Languages</h3>
+      <p>Auto-detects your browser language. Supports EN, PT, DE, FR, ES, IT, RU, ZH, JA, KO, and 15 more.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔧</div>
+      <h3>REST API</h3>
+      <p>Exposes <code style="color:var(--jellyfin-blue)">/AutoPlay/Status</code> and <code style="color:var(--jellyfin-blue)">/AutoPlay/Toggle</code> for automation scripts and home assistants.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Dashboard Toggle</h3>
+      <p>Also accessible from the Jellyfin sidebar for managing autoplay state without opening a video.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <h3>Hot Reload</h3>
+      <p>JavaScript updates deploy via git push — no Jellyfin server restart needed for UI changes.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Install -->
+<section class="install-section" id="install">
+  <div class="install-inner">
+    <div class="section-title" style="margin-bottom:8px">⚡ Installation</div>
+    <div class="section-sub" style="margin-bottom:32px">Ready in under 2 minutes</div>
+
+    <div class="prereq">
+      ⚠️ Requires the <a href="https://github.com/n00bcodr/Jellyfin-JavaScript-Injector" target="_blank">JavaScript Injector</a> plugin by n00bcodr. Install it from the Jellyfin Plugin Catalog first.
+    </div>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Add the repository</h4>
+        <p>Go to <strong>Dashboard → Plugins → Repositories → +</strong> and add:</p>
+        <div class="code-block">
+          <span>https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json</span>
+          <button class="copy-btn" onclick="navigator.clipboard.writeText('https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json');this.textContent='Copied!'">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Install the plugin</h4>
+        <p>Go to <strong>Catalog</strong>, find <strong>AutoPlay Toggle</strong> and click <strong>Install</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Restart Jellyfin</h4>
+        <p>Restart the server once to load the plugin. The button appears automatically in the player.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Languages -->
+<div style="border-bottom: 1px solid var(--jellyfin-border)">
+<section class="section">
+  <div class="section-title">🌍 Supported Languages</div>
+  <div class="section-sub">Automatically detected from your browser — no configuration needed</div>
+  <div class="lang-grid">
+    <div class="lang-item"><span class="lang-code">en</span> English</div>
+    <div class="lang-item"><span class="lang-code">pt</span> Português</div>
+    <div class="lang-item"><span class="lang-code">de</span> Deutsch</div>
+    <div class="lang-item"><span class="lang-code">fr</span> Français</div>
+    <div class="lang-item"><span class="lang-code">es</span> Español</div>
+    <div class="lang-item"><span class="lang-code">it</span> Italiano</div>
+    <div class="lang-item"><span class="lang-code">nl</span> Nederlands</div>
+    <div class="lang-item"><span class="lang-code">ru</span> Русский</div>
+    <div class="lang-item"><span class="lang-code">zh</span> 中文</div>
+    <div class="lang-item"><span class="lang-code">ja</span> 日本語</div>
+    <div class="lang-item"><span class="lang-code">ko</span> 한국어</div>
+    <div class="lang-item"><span class="lang-code">pl</span> Polski</div>
+    <div class="lang-item"><span class="lang-code">sv</span> Svenska</div>
+    <div class="lang-item"><span class="lang-code">nb</span> Norsk</div>
+    <div class="lang-item"><span class="lang-code">da</span> Dansk</div>
+    <div class="lang-item"><span class="lang-code">fi</span> Suomi</div>
+    <div class="lang-item"><span class="lang-code">cs</span> Čeština</div>
+    <div class="lang-item"><span class="lang-code">sk</span> Slovenčina</div>
+    <div class="lang-item"><span class="lang-code">hu</span> Magyar</div>
+    <div class="lang-item"><span class="lang-code">ro</span> Română</div>
+    <div class="lang-item"><span class="lang-code">tr</span> Türkçe</div>
+    <div class="lang-item"><span class="lang-code">ar</span> العربية</div>
+    <div class="lang-item"><span class="lang-code">uk</span> Українська</div>
+    <div class="lang-item"><span class="lang-code">el</span> Ελληνικά</div>
+    <div class="lang-item"><span class="lang-code">ca</span> Català</div>
+  </div>
+  <p style="margin-top:20px; font-size:0.85rem; color:var(--text-muted)">Missing your language? <a href="https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues">Open an issue</a> or submit a PR.</p>
+</section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p style="margin-bottom:8px">
+    <a href="https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle">GitHub</a> ·
+    <a href="https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/issues">Issues</a> ·
+    <a href="https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases">Releases</a>
+  </p>
+  <p>Made with ♥ for the <a href="https://jellyfin.org" target="_blank">Jellyfin</a> community · MIT License</p>
+</footer>
+
+</body>
+</html>
