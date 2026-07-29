@@ -9,12 +9,7 @@
 
   <rect width="256" height="256" rx="32" fill="url(#bg)"/>
 
-  <!-- 🔁 emoji rendered as text -->
-  <text x="128" y="130" font-size="80" text-anchor="middle" dominant-baseline="middle">🔁</text>
-
-  <!-- AutoPlay in white -->
-  <text x="128" y="182" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
-
-  <!-- Toggle in Jellyfin blue -->
-  <text x="128" y="214" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
+  <text x="128" y="108" font-size="80" text-anchor="middle" dominant-baseline="middle">🔁</text>
+  <text x="128" y="168" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
+  <text x="128" y="200" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="28" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
 </svg>
