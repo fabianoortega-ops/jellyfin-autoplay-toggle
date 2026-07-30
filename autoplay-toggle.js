@@ -1,13 +1,7 @@
-/**
- * AutoPlay Toggle — Jellyfin Player Button
- * Servido via GitHub Pages. Atualizar + git push = sem reiniciar o Jellyfin.
- */
 (function () {
     'use strict';
     var BTN_ID = 'apt-player-btn';
     var _state = null;
-
-    // ── i18n ─────────────────────────────────────────────────────────────────
     var i18n = (function () {
         var full = (navigator.language || 'en').toLowerCase();
         var lang = full.split('-')[0];
@@ -40,8 +34,6 @@
         };
         return map[full] || map[lang] || map['en'];
     }());
-
-    // ── API ───────────────────────────────────────────────────────────────────
     function getToken() {
         try { var ac = window.ApiClient; if (!ac) return ''; return (typeof ac.accessToken === 'function' ? ac.accessToken() : ac.accessToken) || ''; } catch(e) { return ''; }
     }
@@ -55,14 +47,11 @@
             body: body ? JSON.stringify(body) : undefined
         }).then(function(r) { return r.json(); });
     }
-
-    // ── Botão ─────────────────────────────────────────────────────────────────
     function applyState(btn, enabled) {
         _state = enabled;
         btn.title = enabled ? i18n.on : i18n.off;
         btn.style.opacity = enabled ? '1' : '0.4';
     }
-
     function createButton() {
         var btn = document.createElement('button');
         btn.id = BTN_ID;
@@ -83,12 +72,6 @@
         });
         return btn;
     }
-
-    // ── Injeção robusta ──────────────────────────────────────────────────────
-    // MutationObserver sempre ativo — detect() é O(1) (getElementById).
-    // Sem setInterval. O observer dispara na mudança de DOM e re-injeta
-    // o botão se o Jellyfin Enhanced ou o player reconstruir os controles.
-
     function inject() {
         if (document.getElementById(BTN_ID)) return;
         var ref = document.querySelector('.btnSubtitles') || document.querySelector('.btnFullscreen');
@@ -96,9 +79,6 @@
         ref.parentNode.insertBefore(createButton(), ref);
         console.log('[AutoPlayToggle] Botão injetado.');
     }
-
-    // Quando o vídeo começa a tocar, tenta injetar a cada 100ms até
-    // o botão aparecer (máx 3s). Para sozinho assim que injeta.
     document.addEventListener('play', function(e) {
         if (!e.target || e.target.tagName !== 'VIDEO') return;
         var tries = 0;
@@ -109,15 +89,11 @@
             }
         }, 100);
     }, true);
-
-    // Mousemove: OSD aparece com movimento — debounce curto para resposta rápida
     var _t = null;
     document.addEventListener('mousemove', function() {
         clearTimeout(_t);
         _t = setTimeout(inject, 60);
     }, { passive: true });
-
-    // Safety net de baixíssimo custo
     setInterval(inject, 4000);
     console.log('[AutoPlayToggle] Script carregado.');
 }());

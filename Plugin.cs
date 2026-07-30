@@ -10,14 +10,12 @@ using MediaBrowser.Model.Plugins;
 using MediaBrowser.Model.Serialization;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
-
 namespace JellyfinAutoPlayToggle
 {
     public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
     {
         public static Plugin? Instance { get; private set; }
         private readonly ILogger<Plugin> _logger;
-
         public Plugin(
             IApplicationPaths applicationPaths,
             IXmlSerializer xmlSerializer,
@@ -28,13 +26,9 @@ namespace JellyfinAutoPlayToggle
             _logger  = logger;
             RegisterWithJavaScriptInjector();
         }
-
         public override string Name        => "AutoPlay Toggle";
         public override string Description => "Botão no player para ligar/desligar o autoplay do próximo episódio.";
         public override Guid   Id          => Guid.Parse("036768e6-cd63-49c0-9661-2677d3ccef72");
-
-        // Roda em background com retry — o Injector pode ainda não estar pronto
-        // quando nosso plugin é carregado pelo Jellyfin.
         private void RegisterWithJavaScriptInjector()
         {
             _ = Task.Run(async () =>
@@ -42,9 +36,7 @@ namespace JellyfinAutoPlayToggle
                 const int maxAttempts = 10;
                 for (int attempt = 1; attempt <= maxAttempts; attempt++)
                 {
-                    // Aguarda crescentemente: 3s, 6s, 9s … até 30s
                     await Task.Delay(TimeSpan.FromSeconds(attempt * 3)).ConfigureAwait(false);
-
                     try
                     {
                         var injectorAssembly = FindAssembly("Jellyfin.Plugin.JavaScriptInjector");
@@ -53,14 +45,12 @@ namespace JellyfinAutoPlayToggle
                             _logger.LogInformation("[AutoPlayToggle] JavaScript Injector não encontrado.");
                             return;
                         }
-
                         var iface = injectorAssembly.GetType("Jellyfin.Plugin.JavaScriptInjector.PluginInterface");
                         if (iface == null)
                         {
                             _logger.LogWarning("[AutoPlayToggle] PluginInterface não encontrado.");
                             return;
                         }
-
                         var payload = new JObject
                         {
                             { "id",                     $"{Id}-player-btn"       },
@@ -72,14 +62,12 @@ namespace JellyfinAutoPlayToggle
                             { "pluginName",             Name                     },
                             { "pluginVersion",          Version.ToString()       }
                         };
-
                         var result = iface.GetMethod("RegisterScript")?.Invoke(null, new object[] { payload });
                         if (result is bool ok && ok)
                         {
                             _logger.LogInformation("[AutoPlayToggle] Script registrado no JavaScript Injector (tentativa {A}).", attempt);
                             return;
                         }
-
                         _logger.LogWarning("[AutoPlayToggle] RegisterScript retornou falso (tentativa {A}/{M}).", attempt, maxAttempts);
                     }
                     catch (TargetInvocationException ex)
@@ -93,27 +81,21 @@ namespace JellyfinAutoPlayToggle
                         return;
                     }
                 }
-
                 _logger.LogWarning("[AutoPlayToggle] Não foi possível registrar após {M} tentativas.", maxAttempts);
             });
         }
-
         private static Assembly? FindAssembly(string name) =>
             AssemblyLoadContext.All
                 .SelectMany(ctx => ctx.Assemblies)
                 .FirstOrDefault(a => a.FullName?.Contains(name) ?? false);
-
         private string BuildPlayerScript() => $@"
-// AutoPlay Toggle — loader
-// O script real é servido pelo GitHub Pages — atualiza sem reiniciar o Jellyfin.
 (function () {{
     var s = document.createElement('script');
-    s.src = 'https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/autoplay-toggle.js?v={Version}';
+    s.src = 'https:
     s.onerror = function() {{ console.warn('[AutoPlayToggle] Falha ao carregar script remoto.'); }};
     document.head.appendChild(s);
 }}());
 ";
-
         public IEnumerable<PluginPageInfo> GetPages() => new[]
         {
             new PluginPageInfo
