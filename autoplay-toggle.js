@@ -61,14 +61,23 @@
         btn.innerHTML = '<span class="material-icons" style="font-size:22px">repeat</span>';
         btn.title = i18n.loading;
         var uid = getUserId();
-        if (uid) api('GET', 'AutoPlay/Status/' + uid).then(function(d) { applyState(btn, d.enableNextEpisodeAutoPlay); }).catch(function(){});
+        if (uid) {
+            api('GET', 'Users/' + uid).then(function(u) {
+                applyState(btn, u.Configuration && u.Configuration.EnableNextEpisodeAutoPlay);
+            }).catch(function(){});
+        }
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             var uid = getUserId(); if (!uid) return;
             btn.disabled = true;
-            api('POST', 'AutoPlay/Toggle', { UserId: uid, Enable: !_state })
-                .then(function(d) { applyState(btn, d.enableNextEpisodeAutoPlay); btn.disabled = false; })
-                .catch(function() { btn.disabled = false; });
+            api('GET', 'Users/' + uid).then(function(u) {
+                var newVal = !(u.Configuration && u.Configuration.EnableNextEpisodeAutoPlay);
+                var cfg = Object.assign({}, u.Configuration, { EnableNextEpisodeAutoPlay: newVal });
+                return api('POST', 'Users/' + uid + '/Configuration', cfg).then(function() {
+                    applyState(btn, newVal);
+                    btn.disabled = false;
+                });
+            }).catch(function() { btn.disabled = false; });
         });
         return btn;
     }
