@@ -91,8 +91,7 @@ namespace JellyfinAutoPlayToggle
         private string BuildPlayerScript() => $@"
 (function () {{
     var s = document.createElement('script');
-    s.src = 'https:
-
+    s.src = 'https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/autoplay-toggle.js?v={Version}';
     document.head.appendChild(s);
 }}());
 ";
