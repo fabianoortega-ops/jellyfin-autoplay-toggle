@@ -68,15 +68,15 @@
         }
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            var uid = getUserId(); if (!uid) return;
+            var uid = getUserId(); if (!uid || _state === null) return;
             btn.disabled = true;
+            var newVal = !_state;
             api('GET', 'Users/' + uid).then(function(u) {
-                var newVal = !(u.Configuration && u.Configuration.EnableNextEpisodeAutoPlay);
                 var cfg = Object.assign({}, u.Configuration, { EnableNextEpisodeAutoPlay: newVal });
-                return api('POST', 'Users/' + uid + '/Configuration', cfg).then(function() {
-                    applyState(btn, newVal);
-                    btn.disabled = false;
-                });
+                return api('POST', 'Users/' + uid + '/Configuration', cfg);
+            }).then(function() {
+                applyState(btn, newVal);
+                btn.disabled = false;
             }).catch(function() { btn.disabled = false; });
         });
         return btn;
@@ -86,7 +86,6 @@
         var ref = document.querySelector('.btnSubtitles') || document.querySelector('.btnFullscreen');
         if (!ref) return;
         ref.parentNode.insertBefore(createButton(), ref);
-        console.log('[AutoPlayToggle] Botão injetado.');
     }
     document.addEventListener('play', function(e) {
         if (!e.target || e.target.tagName !== 'VIDEO') return;
@@ -104,5 +103,4 @@
         _t = setTimeout(inject, 60);
     }, { passive: true });
     setInterval(inject, 4000);
-    console.log('[AutoPlayToggle] Script carregado.');
 }());

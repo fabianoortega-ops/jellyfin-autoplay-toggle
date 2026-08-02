@@ -92,7 +92,7 @@ namespace JellyfinAutoPlayToggle
 (function () {{
     var s = document.createElement('script');
     s.src = 'https:
-    s.onerror = function() {{ console.warn('[AutoPlayToggle] Falha ao carregar script remoto.'); }};
+
     document.head.appendChild(s);
 }}());
 ";
