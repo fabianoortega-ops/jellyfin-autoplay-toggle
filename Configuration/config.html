@@ -13,49 +13,46 @@
             input:checked + .apt-slider { background:#00a4dc; }
             input:checked + .apt-slider:before { transform:translateX(26px); }
             .apt-badge { display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.82em; font-weight:600; text-transform:uppercase; }
-            .apt-badge-on  { background:#00a4dc22; color:#00a4dc; border:1px solid #00a4dc55; }
-            .apt-badge-off { background:#ff444422; color:#ff6666; border:1px solid #ff444455; }
-            .apt-badge-load { background:#44444422; color:#888; border:1px solid #44444455; }
-            .apt-hint { font-size:0.82em; color:#666; margin-top:16px; line-height:1.5; }
+            .apt-badge-on   { background:#00a4dc22; color:#00a4dc; border:1px solid #00a4dc55; }
+            .apt-badge-off  { background:#ff444422; color:#ff6666; border:1px solid #ff444455; }
+            .apt-badge-load { background:#44444422; color:#888;    border:1px solid #44444455; }
+            .apt-hint  { font-size:0.82em; color:#666; margin-top:16px; line-height:1.5; }
             .apt-error { color:#ff6666; font-size:0.85em; margin-top:10px; display:none; }
         </style>
 
         <div class="apt-card">
-            <div class="apt-title">▶ AutoPlay Toggle</div>
-            <div class="apt-subtitle">Controle o autoplay do próximo episódio sem sair desta página.</div>
+            <div class="apt-title">&#9654; AutoPlay Toggle</div>
+            <div class="apt-subtitle">Controle o autoplay do pr&#243;ximo epis&#243;dio sem sair desta p&#225;gina.</div>
             <div class="apt-row">
-                <span class="apt-label">Reproduzir próximo episódio automaticamente</span>
+                <span class="apt-label">Reproduzir pr&#243;ximo epis&#243;dio automaticamente</span>
                 <label class="apt-switch">
                     <input type="checkbox" id="aptToggle" disabled>
                     <span class="apt-slider"></span>
                 </label>
             </div>
             <div class="apt-row" style="justify-content:flex-start;gap:10px;">
-                <span class="apt-label" style="font-size:0.9em;color:#777;">Status:</span>
-                <span id="aptBadge" class="apt-badge apt-badge-load">iniciando…</span>
+                <span class="apt-label" style="font-size:0.9em;color:#777;">Status atual</span>
+                <span id="aptBadge" class="apt-badge apt-badge-load">iniciando&#8230;</span>
             </div>
             <div id="aptError" class="apt-error"></div>
-            <p class="apt-hint">A alteração é aplicada imediatamente na sua conta do Jellyfin.</p>
+            <p class="apt-hint">A altera&#231;&#227;o &#233; aplicada imediatamente na sua conta do Jellyfin.</p>
         </div>
     </div>
 
     <script type="text/javascript">
-        // O script DEVE ficar dentro do div data-role="page" para o Jellyfin executá-lo
         (function () {
-            console.log("[APT] v1.0.3 carregado");
-
             var _done = false;
 
             function badge(state) {
                 var b = document.getElementById("aptBadge");
-                if (state === "on")       { b.textContent = "Ligado";     b.className = "apt-badge apt-badge-on"; }
-                else if (state === "off") { b.textContent = "Desligado";  b.className = "apt-badge apt-badge-off"; }
-                else                      { b.textContent = state;        b.className = "apt-badge apt-badge-load"; }
+                if (state === "on")       { b.textContent = "Ligado";    b.className = "apt-badge apt-badge-on"; }
+                else if (state === "off") { b.textContent = "Desligado"; b.className = "apt-badge apt-badge-off"; }
+                else                      { b.textContent = state;       b.className = "apt-badge apt-badge-load"; }
             }
 
             function showErr(msg) {
                 var e = document.getElementById("aptError");
-                if (msg) { e.textContent = "⚠ " + msg; e.style.display = "block"; }
+                if (msg) { e.textContent = "\u26a0 " + msg; e.style.display = "block"; }
                 else     { e.style.display = "none"; }
             }
 
@@ -78,37 +75,31 @@
             }
 
             function callApi(method, path, body) {
-                var url   = window.location.origin + "/" + path;
-                var token = getToken();
-                console.log("[APT] " + method + " " + url + " token=" + (token ? "ok" : "NULL"));
-                return fetch(url, {
+                return fetch(window.location.origin + "/" + path, {
                     method: method,
                     headers: {
-                        "Authorization": 'MediaBrowser Token="' + token + '"',
+                        "Authorization": "MediaBrowser Token=\"" + getToken() + "\"",
                         "Content-Type":  "application/json"
                     },
                     body: body ? JSON.stringify(body) : undefined
+                }).then(function(r) {
+                    if (r.status === 204 || r.headers.get("content-length") === "0") return null;
+                    return r.json().catch(function() { return null; });
                 });
             }
 
             function loadStatus(userId) {
-                badge("carregando…");
-                callApi("GET", "AutoPlay/Status/" + userId)
-                    .then(function(r) {
-                        console.log("[APT] HTTP " + r.status);
-                        if (!r.ok) throw new Error("HTTP " + r.status);
-                        return r.json();
-                    })
-                    .then(function(d) {
-                        console.log("[APT] " + JSON.stringify(d));
+                badge("carregando\u2026");
+                callApi("GET", "Users/" + userId)
+                    .then(function(u) {
+                        var enabled = u && u.Configuration && u.Configuration.EnableNextEpisodeAutoPlay;
                         var t = document.getElementById("aptToggle");
-                        t.checked  = d.enableNextEpisodeAutoPlay;
+                        t.checked  = !!enabled;
                         t.disabled = false;
-                        badge(d.enableNextEpisodeAutoPlay ? "on" : "off");
+                        badge(enabled ? "on" : "off");
                         showErr(null);
                     })
                     .catch(function(e) {
-                        console.error("[APT] loadStatus falhou: " + e);
                         badge("erro");
                         showErr(e.message);
                     });
@@ -117,19 +108,19 @@
             function saveStatus(userId, val) {
                 var t = document.getElementById("aptToggle");
                 t.disabled = true;
-                badge("salvando…");
-                callApi("POST", "AutoPlay/Toggle", { UserId: userId, Enable: val })
-                    .then(function(r) {
-                        if (!r.ok) throw new Error("HTTP " + r.status);
-                        return r.json();
+                badge("salvando\u2026");
+                callApi("GET", "Users/" + userId)
+                    .then(function(u) {
+                        var cfg = Object.assign({}, u.Configuration, { EnableNextEpisodeAutoPlay: val });
+                        return callApi("POST", "Users/" + userId + "/Configuration", cfg);
                     })
-                    .then(function(d) {
+                    .then(function() {
                         t.disabled = false;
-                        t.checked  = d.enableNextEpisodeAutoPlay;
-                        badge(d.enableNextEpisodeAutoPlay ? "on" : "off");
+                        t.checked  = val;
+                        badge(val ? "on" : "off");
+                        showErr(null);
                     })
                     .catch(function(e) {
-                        console.error("[APT] saveStatus falhou: " + e);
                         t.checked  = !val;
                         t.disabled = false;
                         badge(!val ? "on" : "off");
@@ -143,7 +134,6 @@
                 if (!ac) { setTimeout(init, 200); return; }
                 var uid = getUserId();
                 if (!uid) { setTimeout(init, 200); return; }
-                console.log("[APT] init userId=" + uid);
                 _done = true;
                 loadStatus(uid);
                 document.getElementById("aptToggle").addEventListener("change", function () {
@@ -151,7 +141,6 @@
                 });
             }
 
-            // Jellyfin dispara pageshow no elemento da página após injetar o HTML
             var page = document.querySelector(".AutoPlayToggle");
             if (page) {
                 page.addEventListener("pageshow", init);
@@ -161,4 +150,3 @@
         }());
     </script>
 </div>
-
