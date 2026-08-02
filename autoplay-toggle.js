@@ -45,7 +45,7 @@
             method: method,
             headers: { 'Authorization': 'MediaBrowser Token="' + getToken() + '"', 'Content-Type': 'application/json' },
             body: body ? JSON.stringify(body) : undefined
-        }).then(function(r) { return r.json(); });
+        }).then(function(r) { if (r.status === 204 || r.headers.get('content-length') === '0') return null; return r.json().catch(function() { return null; }); });
     }
     function applyState(btn, enabled) {
         _state = enabled;
