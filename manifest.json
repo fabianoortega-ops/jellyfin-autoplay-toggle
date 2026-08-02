@@ -1,19 +1,19 @@
 [{
   "guid": "036768e6-cd63-49c0-9661-2677d3ccef72",
   "name": "AutoPlay Toggle",
-  "description": "Adiciona um botão para ligar/desligar o autoplay do próximo episódio diretamente pelo Dashboard.",
-  "overview": "Controle o autoplay do próximo episódio sem sair do Dashboard do Jellyfin.",
+  "description": "Adiciona um botao para ligar/desligar o autoplay do proximo episodio diretamente pelo Dashboard.",
+  "overview": "Controle o autoplay do proximo episodio sem sair do Dashboard do Jellyfin.",
   "owner": "fabianoortega-ops",
   "category": "General",
   "imageUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/logo.svg",
   "versions": [
     {
-      "version": "0.2.7.0",
-      "changelog": "## 0.2.7.0\n\n- AutoPlay Toggle v0.2.7.0",
+      "version": "0.2.8.0",
+      "changelog": "## 0.2.8.0",
       "targetAbi": "10.11.0.0",
-      "sourceUrl": "https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases/download/v0.2.7.0/JellyfinAutoPlayToggle_0.2.7.0.zip",
-      "checksum": "55c5986c8471e6598c97b9f9ed37c3c0",
-      "timestamp": "2026-07-29T17:36:58Z"
+      "sourceUrl": "https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases/download/v0.2.8.0/JellyfinAutoPlayToggle_0.2.8.0.zip",
+      "checksum": "a05e8037ee1efe7599aa218bfaa9bb9e",
+      "timestamp": "2026-08-02T14:10:27Z"
     }
   ]
 }]
