@@ -8,12 +8,12 @@
   "imageUrl": "https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/logo.svg",
   "versions": [
     {
-      "version": "0.2.8.0",
-      "changelog": "## 0.2.8.0",
+      "version": "0.2.9.0",
+      "changelog": "## 0.2.9.0",
       "targetAbi": "10.11.0.0",
-      "sourceUrl": "https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases/download/v0.2.8.0/JellyfinAutoPlayToggle_0.2.8.0.zip",
-      "checksum": "a05e8037ee1efe7599aa218bfaa9bb9e",
-      "timestamp": "2026-08-02T14:10:27Z"
+      "sourceUrl": "https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases/download/v0.2.9.0/JellyfinAutoPlayToggle_0.2.9.0.zip",
+      "checksum": "12d03ee686a44af30b149abbdea7aaf2",
+      "timestamp": "2026-08-02T14:20:27Z"
     }
   ]
 }]
