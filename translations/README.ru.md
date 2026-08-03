@@ -166,3 +166,4 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 [Лицензия MIT](LICENSE) · [Сайт](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [Релизы](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

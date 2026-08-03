@@ -45,12 +45,23 @@
             method: method,
             headers: { 'Authorization': 'MediaBrowser Token="' + getToken() + '"', 'Content-Type': 'application/json' },
             body: body ? JSON.stringify(body) : undefined
-        }).then(function(r) { if (r.status === 204 || r.headers.get('content-length') === '0') return null; return r.json().catch(function() { return null; }); });
+        }).then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); if (r.status === 204) return null; return r.json().catch(function() { return null; }); });
+    }
+    function pillSVG(on) {
+        var pc = on ? '#00a4dc' : '#444';
+        var dc = on ? '#ffffff' : '#666';
+        var dx = on ? '40' : '10';
+        var play = on ? '<polygon points="37,8 37,16 44,12" fill="#00a4dc"/>' : '';
+        return '<svg width="52" height="24" viewBox="0 0 52 24" style="display:block">' +
+            '<rect x="1" y="5" width="50" height="14" rx="7" fill="' + pc + '"/>' +
+            '<circle cx="' + dx + '" cy="12" r="6.5" fill="' + dc + '"/>' +
+            play + '</svg>';
     }
     function applyState(btn, enabled) {
-        _state = enabled;
-        btn.title = enabled ? i18n.on : i18n.off;
-        btn.style.opacity = enabled ? '1' : '0.4';
+        _state = !!enabled;
+        btn.innerHTML = pillSVG(_state);
+        btn.style.opacity = '1';
+        btn.title = _state ? i18n.on : i18n.off;
     }
     function createButton() {
         var btn = document.createElement('button');
@@ -104,3 +115,4 @@
     }, { passive: true });
     setInterval(inject, 4000);
 }());
+

@@ -158,3 +158,4 @@ Made with ♥ for the [Jellyfin](https://jellyfin.org) community
 [MIT License](LICENSE) · [Website](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [Releases](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

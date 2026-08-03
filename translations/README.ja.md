@@ -166,3 +166,4 @@ Jellyfinコミュニティに参加：
 [MITライセンス](LICENSE) · [サイト](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [リリース](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

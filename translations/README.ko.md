@@ -166,3 +166,4 @@ Jellyfin 커뮤니티에 참여하세요:
 [MIT 라이선스](LICENSE) · [웹사이트](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [릴리스](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

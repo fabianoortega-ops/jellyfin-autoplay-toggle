@@ -2,8 +2,12 @@
     <div class="content-primary">
         <style>
             .apt-card { background:#1c1c1c; border:1px solid #333; border-radius:10px; padding:24px; max-width:480px; margin:24px auto; }
-            .apt-title { font-size:1.4em; font-weight:600; color:#e0e0e0; margin-bottom:6px; }
-            .apt-subtitle { font-size:0.9em; color:#888; margin-bottom:24px; }
+            .apt-header { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+            .apt-logo { width:64px; height:64px; border-radius:14px; flex-shrink:0; }
+            .apt-title { font-size:1.4em; font-weight:700; color:#ffffff; line-height:1.2; }
+            .apt-title span { color:#00a4dc; display:block; }
+            .apt-subtitle { font-size:0.9em; color:#666; margin-top:4px; }
+            .apt-divider { border:none; border-top:1px solid #2a2a2a; margin:0 0 20px; }
             .apt-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
             .apt-label { font-size:1em; color:#ccc; }
             .apt-switch { position:relative; display:inline-block; width:56px; height:30px; }
@@ -21,8 +25,28 @@
         </style>
 
         <div class="apt-card">
-            <div class="apt-title">&#9654; AutoPlay Toggle</div>
-            <div class="apt-subtitle">Controle o autoplay do pr&#243;ximo epis&#243;dio sem sair desta p&#225;gina.</div>
+            <div class="apt-header">
+                <svg class="apt-logo" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="aptbg" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0a0a0a"/>
+                            <stop offset="50%" stop-color="#001a24"/>
+                            <stop offset="100%" stop-color="#0a0a0a"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="256" height="256" rx="46" fill="url(#aptbg)"/>
+                    <rect x="24" y="57" width="208" height="56" rx="28" fill="#00a4dc"/>
+                    <circle cx="204" cy="85" r="24" fill="#ffffff"/>
+                    <polygon points="193,73 193,97 218,85" fill="#00a4dc"/>
+                    <text x="128" y="170" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
+                    <text x="128" y="220" font-family="-apple-system,BlinkMacSystemFont,sans-serif" font-size="46" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
+                </svg>
+                <div>
+                    <div class="apt-title">AutoPlay<span>Toggle</span></div>
+                    <div class="apt-subtitle">Control autoplay without leaving the Dashboard</div>
+                </div>
+            </div>
+            <hr class="apt-divider">
             <div class="apt-row">
                 <span class="apt-label">Reproduzir pr&#243;ximo epis&#243;dio automaticamente</span>
                 <label class="apt-switch">
@@ -42,20 +66,17 @@
     <script type="text/javascript">
         (function () {
             var _done = false;
-
             function badge(state) {
                 var b = document.getElementById("aptBadge");
                 if (state === "on")       { b.textContent = "Ligado";    b.className = "apt-badge apt-badge-on"; }
                 else if (state === "off") { b.textContent = "Desligado"; b.className = "apt-badge apt-badge-off"; }
                 else                      { b.textContent = state;       b.className = "apt-badge apt-badge-load"; }
             }
-
             function showErr(msg) {
                 var e = document.getElementById("aptError");
                 if (msg) { e.textContent = "\u26a0 " + msg; e.style.display = "block"; }
                 else     { e.style.display = "none"; }
             }
-
             function getToken() {
                 try {
                     var ac = window.ApiClient;
@@ -64,7 +85,6 @@
                     return ac.accessToken || ac._accessToken || null;
                 } catch(e) { return null; }
             }
-
             function getUserId() {
                 try {
                     var ac = window.ApiClient;
@@ -73,7 +93,6 @@
                     return ac.currentUserId || ac._currentUserId || null;
                 } catch(e) { return null; }
             }
-
             function callApi(method, path, body) {
                 return fetch(window.location.origin + "/" + path, {
                     method: method,
@@ -83,11 +102,11 @@
                     },
                     body: body ? JSON.stringify(body) : undefined
                 }).then(function(r) {
-                    if (r.status === 204 || r.headers.get("content-length") === "0") return null;
+                    if (!r.ok) throw new Error("HTTP " + r.status);
+                    if (r.status === 204) return null;
                     return r.json().catch(function() { return null; });
                 });
             }
-
             function loadStatus(userId) {
                 badge("carregando\u2026");
                 callApi("GET", "Users/" + userId)
@@ -99,12 +118,8 @@
                         badge(enabled ? "on" : "off");
                         showErr(null);
                     })
-                    .catch(function(e) {
-                        badge("erro");
-                        showErr(e.message);
-                    });
+                    .catch(function(e) { badge("erro"); showErr(e.message); });
             }
-
             function saveStatus(userId, val) {
                 var t = document.getElementById("aptToggle");
                 t.disabled = true;
@@ -127,7 +142,6 @@
                         showErr(e.message);
                     });
             }
-
             function init() {
                 if (_done) return;
                 var ac = window.ApiClient;
@@ -140,7 +154,6 @@
                     saveStatus(uid, this.checked);
                 });
             }
-
             var page = document.querySelector(".AutoPlayToggle");
             if (page) {
                 page.addEventListener("pageshow", init);
@@ -150,3 +163,4 @@
         }());
     </script>
 </div>
+

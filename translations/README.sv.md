@@ -128,3 +128,4 @@ Gjord med ♥ för [Jellyfin](https://jellyfin.org)-gemenskapen
 [MIT-licens](LICENSE) · [Webbplats](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [Utgåvor](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

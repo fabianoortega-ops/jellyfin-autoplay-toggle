@@ -166,3 +166,4 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 [MIT 许可证](LICENSE) · [网站](https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle) · [发布](https://github.com/fabianoortega-ops/jellyfin-autoplay-toggle/releases)
 
 </div>
+

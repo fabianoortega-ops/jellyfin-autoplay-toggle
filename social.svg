@@ -2,54 +2,30 @@
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="40%" stop-color="#001a24"/>
+      <stop offset="50%" stop-color="#001a24"/>
       <stop offset="100%" stop-color="#0a0a0a"/>
     </linearGradient>
-    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00a4dc" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#00a4dc" stop-opacity="0"/>
-    </linearGradient>
   </defs>
-
-  <!-- Background -->
   <rect width="1280" height="640" fill="url(#bg)"/>
-  <circle cx="640" cy="320" r="400" fill="url(#glow)"/>
-
-  <!-- Grid lines (subtle) -->
   <line x1="0" y1="213" x2="1280" y2="213" stroke="#ffffff" stroke-width="0.5" opacity="0.04"/>
   <line x1="0" y1="427" x2="1280" y2="427" stroke="#ffffff" stroke-width="0.5" opacity="0.04"/>
   <line x1="427" y1="0" x2="427" y2="640" stroke="#ffffff" stroke-width="0.5" opacity="0.04"/>
   <line x1="853" y1="0" x2="853" y2="640" stroke="#ffffff" stroke-width="0.5" opacity="0.04"/>
-
-  <!-- Logo left side -->
-  <g transform="translate(180, 220)">
-    <!-- Repeat ring -->
-    <path d="M 0 50 A 80 80 0 0 1 160 50" fill="none" stroke="#00a4dc" stroke-width="18" stroke-linecap="round"/>
-    <polygon points="160,28 184,50 160,72" fill="#00a4dc"/>
-    <path d="M 160 130 A 80 80 0 0 1 0 130" fill="none" stroke="#00a4dc" stroke-width="18" stroke-linecap="round"/>
-    <polygon points="0,108 -24,130 0,152" fill="#00a4dc"/>
-    <!-- Play -->
-    <polygon points="52,60 52,120 120,90" fill="#ffffff" opacity="0.95"/>
+  <g transform="translate(130,165)">
+    <rect width="310" height="310" rx="60" fill="#0d0d0d"/>
+    <rect x="28" y="72" width="254" height="86" rx="43" fill="#00a4dc"/>
+    <circle cx="254" cy="115" r="38" fill="#ffffff"/>
+    <polygon points="237,93 237,137 275,115" fill="#00a4dc"/>
+    <text x="155" y="246" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="56" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
+    <text x="155" y="304" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="56" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
   </g>
-
-  <!-- Title -->
-  <text x="440" y="265" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="76" font-weight="700" fill="#ffffff">AutoPlay</text>
-  <text x="440" y="355" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="76" font-weight="700" fill="#00a4dc">Toggle</text>
-
-  <!-- Subtitle -->
-  <text x="440" y="415" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="26" fill="#888888">Toggle next episode autoplay directly from the Jellyfin player</text>
-
-  <!-- Bottom badges -->
-  <rect x="440" y="455" width="160" height="38" rx="19" fill="#00a4dc" opacity="0.15" stroke="#00a4dc" stroke-width="1"/>
-  <text x="520" y="479" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#00a4dc" text-anchor="middle">Jellyfin 10.11</text>
-
-  <rect x="616" y="455" width="130" height="38" rx="19" fill="#00a4dc" opacity="0.15" stroke="#00a4dc" stroke-width="1"/>
-  <text x="681" y="479" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#00a4dc" text-anchor="middle">25 languages</text>
-
-  <rect x="762" y="455" width="100" height="38" rx="19" fill="#00a4dc" opacity="0.15" stroke="#00a4dc" stroke-width="1"/>
-  <text x="812" y="479" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#00a4dc" text-anchor="middle">MIT License</text>
-
-  <!-- URL bottom -->
-  <text x="640" y="580" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" fill="#444444" text-anchor="middle">fabianoortega-ops.github.io/jellyfin-autoplay-toggle</text>
+  <text x="560" y="280" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="76" font-weight="700" fill="#ffffff">AutoPlay</text>
+  <text x="560" y="366" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="76" font-weight="700" fill="#00a4dc">Toggle</text>
+  <text x="560" y="416" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="26" fill="#777">Control autoplay directly from the Jellyfin player</text>
+  <rect x="560" y="440" width="160" height="38" rx="19" fill="rgba(0,164,220,0.1)" stroke="#00a4dc" stroke-width="1"/>
+  <text x="640" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#00a4dc" text-anchor="middle">Jellyfin 10.11</text>
+  <rect x="734" y="440" width="130" height="38" rx="19" fill="rgba(0,164,220,0.1)" stroke="#00a4dc" stroke-width="1"/>
+  <text x="799" y="464" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#00a4dc" text-anchor="middle">MIT License</text>
+  <text x="640" y="580" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="20" fill="#444" text-anchor="middle">fabianoortega-ops.github.io/jellyfin-autoplay-toggle</text>
 </svg>
 
