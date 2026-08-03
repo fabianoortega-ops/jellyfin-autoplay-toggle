@@ -167,3 +167,4 @@ https://fabianoortega-ops.github.io/jellyfin-autoplay-toggle/manifest.json
 
 </div>
 
+

@@ -48,14 +48,12 @@
         }).then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); if (r.status === 204) return null; return r.json().catch(function() { return null; }); });
     }
     function pillSVG(on) {
-        var pc = on ? '#00a4dc' : '#444';
-        var dc = on ? '#ffffff' : '#666';
-        var dx = on ? '40' : '10';
-        var play = on ? '<polygon points="37,8 37,16 44,12" fill="#00a4dc"/>' : '';
-        return '<svg width="52" height="24" viewBox="0 0 52 24" style="display:block">' +
-            '<rect x="1" y="5" width="50" height="14" rx="7" fill="' + pc + '"/>' +
-            '<circle cx="' + dx + '" cy="12" r="6.5" fill="' + dc + '"/>' +
-            play + '</svg>';
+        var bg = on ? '#00a4dc' : '#555';
+        var cx = on ? '26' : '10';
+        return '<svg width="36" height="20" viewBox="0 0 36 20" style="display:block">' +
+            '<rect x="1" y="1" width="34" height="18" rx="9" fill="' + bg + '"/>' +
+            '<circle cx="' + cx + '" cy="10" r="7" fill="#ffffff"/>' +
+            '</svg>';
     }
     function applyState(btn, enabled) {
         _state = !!enabled;
