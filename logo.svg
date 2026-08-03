@@ -7,10 +7,9 @@
     </linearGradient>
   </defs>
   <rect width="256" height="256" rx="46" fill="url(#bg)"/>
-  <rect x="24" y="48" width="208" height="56" rx="28" fill="#00a4dc"/>
-  <circle cx="204" cy="76" r="24" fill="#ffffff"/>
-  <polygon points="193,64 193,88 218,76" fill="#00a4dc"/>
-  <text x="128" y="158" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
-  <text x="128" y="208" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="46" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
+  <rect x="28" y="32" width="200" height="52" rx="26" fill="#00a4dc"/>
+  <circle cx="202" cy="58" r="20" fill="#ffffff"/>
+  <polygon points="193,48 193,68 213,58" fill="#00a4dc"/>
+  <text x="128" y="142" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">AutoPlay</text>
+  <text x="128" y="190" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="40" font-weight="700" fill="#00a4dc" text-anchor="middle">Toggle</text>
 </svg>
-
