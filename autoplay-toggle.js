@@ -86,6 +86,26 @@
             }).then(function() {
                 applyState(btn, newVal);
                 btn.disabled = false;
+                try {
+                    var ac = window.ApiClient;
+                    if (ac) {
+                        ['_currentUser', 'currentUser'].forEach(function(k) {
+                            if (ac[k] && ac[k].Configuration) {
+                                ac[k].Configuration.EnableNextEpisodeAutoPlay = newVal;
+                            }
+                        });
+                        if (typeof ac.getUser === 'function') {
+                            ac.getUser(uid).then(function(u) {
+                                if (u && u.Configuration) {
+                                    u.Configuration.EnableNextEpisodeAutoPlay = newVal;
+                                }
+                            }).catch(function() {});
+                        }
+                    }
+                    var events = window.Events || (window.Jellyfin && window.Jellyfin.Events);
+                    var us = window.userSettings;
+                    if (events && us) events.trigger(us, 'change', ['EnableNextEpisodeAutoPlay']);
+                } catch(e) {}
             }).catch(function() { btn.disabled = false; });
         });
         return btn;
@@ -113,4 +133,3 @@
     }, { passive: true });
     setInterval(inject, 4000);
 }());
-
